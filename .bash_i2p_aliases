@@ -1,0 +1,5 @@
+#This file contains aliases useful for working with i2p and i2pd
+
+alias i2pdlog="sudo -u i2pd tail -f /var/log/i2pd.log"
+alias i2pdctl="nohup uzbl 127.0.0.1:7070 &> /dev/null &"
+
