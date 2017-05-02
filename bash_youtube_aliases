@@ -1,0 +1,187 @@
+#! /bin/sh
+DLNA_SHARED_MUSIC="$HOME/Downloads/Music"
+music(){
+	nohup youtube-dl -v  \
+                --prefer-free-formats \
+		--output "$DLNA_SHARED_MUSIC/%(creator)s.%(uploader)s/%(title)s.%(ext)s" \
+		"$1" &> ~/Downloads/youtube-dl.log &
+	bash -c 'sleep 3; cat ~/Downloads/youtube-dl.log' &
+	echo "ydllog to view log"
+}
+musicplaylist(){
+	nohup youtube-dl -v  \
+                --prefer-free-formats \
+		--output "$DLNA_SHARED_MUSIC/%(playlist)s/%(title)s.%(ext)s" \
+		"$1" &> ~/Downloads/youtube-dl.log &
+	bash -c 'sleep 3; cat ~/Downloads/youtube-dl.log' &
+	echo "ydllog to view log"
+}
+DLNA_SHARED_AUDIOPLAYS="$HOME/Downloads/AudioPlay"
+audiodrama(){
+        nohup youtube-dl -v  \
+                --prefer-free-formats \
+		--output "$DLNA_SHARED_AUDIOPLAYS/%(creator)s.%(uploader)s/%(title)s.%(ext)s" \
+		"$1" &> ~/Downloads/youtube-dl.log &
+	bash -c 'sleep 3; cat ~/Downloads/youtube-dl.log' &
+	echo "ydllog to view log"
+}
+audiodramaplaylist(){
+        nohup youtube-dl -v  \
+                --prefer-free-formats \
+		--output "$DLNA_SHARED_AUDIOPLAYS/%(playlist)s/%(title)s.%(ext)s" \
+		"$1" &> ~/Downloads/youtube-dl.log &
+	bash -c 'sleep 3; cat ~/Downloads/youtube-dl.log' &
+	echo "ydllog to view log"
+}
+DLNA_SHARED_NEWS="$HOME/Downloads/News"
+audionews(){
+        nohup youtube-dl -v  \
+                --prefer-free-formats \
+		--output "$DLNA_SHARED_NEWS/%(creator)s.%(uploader)s/%(title)s.%(ext)s" \
+		"$1" &> ~/Downloads/youtube-dl.log &
+	bash -c 'sleep 3; cat ~/Downloads/youtube-dl.log' &
+	echo "ydllog to view log"
+}
+audionewsplaylist(){
+        nohup youtube-dl -v  \
+                --prefer-free-formats \
+		--output "$DLNA_SHARED_NEWS/%(playlist)s/%(title)s.%(ext)s" \
+		"$1" &> ~/Downloads/youtube-dl.log &
+	bash -c 'sleep 3; cat ~/Downloads/youtube-dl.log' &
+	echo "ydllog to view log"
+}
+DLNA_SHARED_AUDIOBOOK="$HOME/Downloads/AudioBook"
+audiobook(){
+        nohup youtube-dl -v  \
+                --prefer-free-formats \
+		--output "$DLNA_SHARED_AUDIOBOOK/%(creator)s.%(uploader)s/%(title)s.%(ext)s" \
+		"$1" &> ~/Downloads/youtube-dl.log &
+	bash -c 'sleep 3; cat ~/Downloads/youtube-dl.log' &
+	echo "ydllog to view log"
+}
+audiobookplaylist(){
+        nohup youtube-dl -v  \
+                --prefer-free-formats \
+		--output "$DLNA_SHARED_AUDIOBOOK/Downloads/AudioBook/%(playlist)s/%(title)s.%(ext)s" \
+		"$1" &> ~/Downloads/youtube-dl.log &
+	bash -c 'sleep 3; cat ~/Downloads/youtube-dl.log' &
+	echo "ydllog to view log"
+}
+DLNA_SHARED_COMEDY="$HOME/Downloads/Comedy"
+audiocomedy(){
+        nohup youtube-dl -v  \
+                --prefer-free-formats \
+		--output "$DLNA_SHARED_COMEDY/%(creator)s.%(uploader)s/%(title)s.%(ext)s" \
+		"$1" &> ~/Downloads/youtube-dl.log &
+	bash -c 'sleep 3; cat ~/Downloads/youtube-dl.log' &
+	echo "ydllog to view log"
+}
+audiocomedyplaylist(){
+        nohup youtube-dl -v  \
+                --prefer-free-formats \
+		--output "$DLNA_SHARED_COMEDY/%(playlist)s/%(title)s.%(ext)s" \
+		"$1" &> ~/Downloads/youtube-dl.log &
+	bash -c 'sleep 3; cat ~/Downloads/youtube-dl.log' &
+	echo "ydllog to view log"
+}
+DLNA_SHARED_MOVIES="$HOME/Downloads/Movies"
+movie(){
+	nohup youtube-dl -v  \
+		--prefer-free-formats \
+		--output "$DLNA_SHARED_MOVIES/%(creator)s.%(uploader)s/%(title)s.%(ext)s" \
+		"$1" &> ~/Downloads/youtube-dl.log &
+	bash -c 'sleep 3; cat ~/Downloads/youtube-dl.log' &
+	echo "ydllog to view log"
+}
+movieplaylist(){
+	nohup youtube-dl -v  \
+		--prefer-free-formats \
+		--output "$DLNA_SHARED_MOVIES/%(playlist)s/%(title)s.%(ext)s" \
+		"$1" &> ~/Downloads/youtube-dl.log &
+	bash -c 'sleep 3; cat ~/Downloads/youtube-dl.log' &
+	echo "ydllog to view log"
+}
+DLNA_SHARED_TV="$HOME/Downloads/TVShows"
+show(){
+	nohup youtube-dl -v  \
+		--prefer-free-formats \
+		--output "$DLNA_SHARED_TV/%(creator)s.%(uploader)s/%(title)s.%(ext)s" \
+		"$1" &> ~/Downloads/youtube-dl.log &
+	bash -c 'sleep 3; cat ~/Downloads/youtube-dl.log' &
+	echo "ydllog to view log"
+}
+showplaylist(){
+	nohup youtube-dl -v  \
+		--prefer-free-formats \
+		--output "$DLNA_SHARED_TV/%(playlist)s/%(title)s.%(ext)s" \
+		"$1" &> ~/Downloads/youtube-dl.log &
+	bash -c 'sleep 3; cat ~/Downloads/youtube-dl.log' &
+	echo "ydllog to view log"
+}
+DLNA_SHARED_PRESENTATION="$HOME/Downloads/Presentations"
+presentation(){
+	nohup youtube-dl -v  \
+		--prefer-free-formats \
+		--output "$DLNA_SHARED_PRESENTATION/%(creator)s.%(uploader)s/%(title)s.%(ext)s" \
+		"$1" &> ~/Downloads/youtube-dl.log &
+	bash -c 'sleep 3; cat ~/Downloads/youtube-dl.log' &
+	echo "ydllog to view log"
+}
+presentationplaylist(){
+	nohup youtube-dl -v  \
+		--prefer-free-formats \
+		--output "$DLNA_SHARED_PRESENTATION/%(playlist)s/%(title)s.%(ext)s" \
+		"$1" &> ~/Downloads/youtube-dl.log &
+	bash -c 'sleep 3; cat ~/Downloads/youtube-dl.log' &
+	echo "ydllog to view log"
+}
+ydllog(){
+	tail -f $HOME/Downloads/youtube-dl.log
+}
+setup_links(){
+        mkdir -p ~/Audio
+        mkdir -p ~/Video
+        mkdir -p $DLNA_SHARED_MUSIC
+        mkdir -p $DLNA_SHARED_AUDIOPLAYS
+        mkdir -p $DLNA_SHARED_NEWS
+        mkdir -p $DLNA_SHARED_AUDIOBOOK
+        mkdir -p $DLNA_SHARED_COMEDY
+        mkdir -p $DLNA_SHARED_TV
+        mkdir -p $DLNA_SHARED_MOVIES
+        mkdir -p $DLNA_SHARED_PRESENTATION
+
+        rm $HOME/Audio/Music
+        rm $HOME/Audio/Plays
+        rm $HOME/Audio/News
+        rm $HOME/Audio/Books
+        rm $HOME/Audio/Comedy
+        rm $HOME/Video/TV
+        rm $HOME/Video/Movies
+        rm $HOME/Video/Presentations
+
+        ln -s $DLNA_SHARED_MUSIC $HOME/Audio/Music
+        ln -s $DLNA_SHARED_AUDIOPLAYS $HOME/Audio/Plays
+        ln -s $DLNA_SHARED_NEWS $HOME/Audio/News
+        ln -s $DLNA_SHARED_AUDIOBOOK $HOME/Audio/Books
+        ln -s $DLNA_SHARED_COMEDY $HOME/Audio/Comedy
+        ln -s $DLNA_SHARED_TV $HOME/Video/TV
+        ln -s $DLNA_SHARED_MOVIES $HOME/Video/Movies
+        ln -s $DLNA_SHARED_PRESENTATION $HOME/Video/Presentations
+}
+alias song=music
+alias song=musicplaylist
+alias radrama=audiodrama
+alias radramapl=audiodramaplaylist
+alias news=audionews
+alias newspl=audionewspl
+alias book=audiobook
+alias bookpl=audiobookplaylist
+alias standup=audiocomedy
+alias standuppl=audiocomedyplaylist
+alias film=movie
+alias filmpl=movieplaylist
+alias tv=show
+alias tvpl=showpl
+alias conv=presentation
+alias convpl=presentationplaylist
+alias ylog=ydllog
