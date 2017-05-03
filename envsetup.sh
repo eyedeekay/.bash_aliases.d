@@ -1,13 +1,13 @@
 #! /usr/bin/env bash
 
 
-for file in $(find $HOME/.bash_aliases.d/ -name 'bash_*_aliases'); do
+for file in $HOME/.bash_aliases.d/bash_*_aliases; do
         echo "loading aliases file: $file"
         . "$file"
 done
 
 reload_aliases(){
-        for file in $(find $HOME/.bash_aliases.d/ -name 'bash_*_aliases'); do
+        for file in $HOME/.bash_aliases.d/bash_*_aliases; do
                 echo "loading aliases file: $file"
                 . "$file"
         done
