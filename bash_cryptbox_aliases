@@ -1,5 +1,5 @@
 #! /usr/bin/env sh
-alias safe="gocryptfs -passfile /media/ENCRYPTED/SafeKombination \$HOME/Sync/.Safe unSafe"
+alias safe="gocryptfs -passfile /media/ENCRYPTED/SafeKombination \$HOME/Sync/.Safe \$HOME/unSafe"
 alias unsafe="fusermount -u \$HOME/unSafe"
 alias usbsafe="sudo cryptsetup -d \$HOME/.USBPASS luksOpen /dev/sdb1 LUKSUSB"
 alias usbunsafe="sudo cryptsetup luksClose LUKSUSB"
