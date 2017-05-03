@@ -1,0 +1,31 @@
+
+In ./bash_extra_aliases line 49:
+    bash -c ". torsocks on && terminator $@ -l default -p $HOME/.torminalrc -u -T Torminal" # &> /dev/urandom
+                                         ^-- SC2145: Argument mixes string and array. Use * or separate argument.
+
+
+In ./bash_extra_aliases line 53:
+    . torsocks on
+    ^-- SC1091: Not following: torsocks was not specified as input (see shellcheck -x).
+
+
+In ./bash_extra_aliases line 57:
+    . torsocks off
+    ^-- SC1091: Not following: torsocks was not specified as input (see shellcheck -x).
+
+
+In ./bash_extra_aliases line 108:
+    \git \clone "$@"
+    ^-- SC1001: This \g will be a regular 'g' in this context.
+         ^-- SC1001: This \c will be a regular 'c' in this context.
+
+
+In ./bash_extra_aliases line 112:
+    \curl http://textbelt.com/text -d "number=$1" -d "message=$2"
+    ^-- SC1001: This \c will be a regular 'c' in this context.
+
+
+In ./bash_extra_aliases line 123:
+    \rm "$HOME/overwrite"
+    ^-- SC1012: \r is just literal 'r' here. For carriage return, use "$(printf "\r")" instead.
+

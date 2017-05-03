@@ -1,42 +1,42 @@
 #! /usr/bin/env sh
-alias wicd="nohup wicd-gtk &>/dev/null &"
-alias pcmanfm="nohup pcmanfm . &> /dev/null &"
+alias wicd="nohup wicd-gtk >/dev/null 2>&1 &"
+alias pcmanfm="nohup pcmanfm . >/dev/null 2>&1 &"
 meditor(){
-	DEFAULT_FILE=""
+	medit_open_files=""
 	if [ -f "Makefile" ]; then
-		DEFAULT_FILE="Makefile"
+		medit_open_files="Makefile"
 	fi
 	if [ -f "README.md" ]; then
-		DEFAULT_FILE="$DEFAULT_FILE README.md"
+		medit_open_files="$medit_open_files README.md"
 	elif [ -f "README" ]; then
-		DEFAULT_FILE="$DEFAULT_FILE README"
+		medit_open_files="$medit_open_files README"
 	fi
         if [ -f "auto/config" ]; then
-		DEFAULT_FILE="$DEFAULT_FILE auto/config"
+		medit_open_files="$medit_open_files auto/config"
 	fi
         if [ -f "build.sh" ]; then
-		DEFAULT_FILE="$DEFAULT_FILE build.sh"
+		medit_open_files="$medit_open_files build.sh"
 	fi
-	nohup medit --new-app --use-session=no $DEFAULT_FILE "$@" &> /dev/null &
+	nohup medit --new-app --use-session=no "${medit_open_files}" "$@" >/dev/null 2>&1 &
 }
 alias medit="meditor "
 alias hangouts="docker run -it --rm --name hangups --volumes-from hangups-session tdryer/hangups"
-alias dateset="sudo date --set \"$(curl -s --head http://google.com | grep ^Date: | sed 's/Date: //g')\""
+alias dateset="sudo date --set \"\$(curl -s --head https://google.com | grep ^Date: | sed 's/Date: //g')\""
 tox(){
-	cd "$HOME/Tox"
+	cd "$HOME/Tox" || exit
 	ratox ./tox.save
 }
 alias ratox=tox
 alias logtail="tail -n 100 log"
 alias errtail="tail -n 100 err"
-export DEBOOTSTRAPOPTS="--keyring /usr/share/keyrings/devuan-keyring.gpg"
+export devuan_debootstrap_opts="--keyring /usr/share/keyrings/devuan-keyring.gpg"
 web(){
-	nohup sr W "$@" &> /dev/null &
+	nohup sr W "$@" >/dev/null 2>&1 &
 }
-alias edalias="medit ~/$HOME/.bash_*aliases*"
-alias dub="nohup sakura &> /dev/null &"
+alias edalias="medit \$HOME/.bash_aliases \$HOME/.bash_aliases.d/bash_*aliases*"
+alias dub="nohup sakura >/dev/null 2>&1 &"
 repopush(){
-        export DEV_MESSAGE="$@"
+        export DEV_MESSAGE="$*"
         make push
 }
 alias make-push=repopush

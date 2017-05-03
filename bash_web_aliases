@@ -1,6 +1,6 @@
 #! /usr/bin/env sh
 surfr(){
-        nohup sr "$@" >/dev/null 2>&1 /dev/null &
+        nohup sr "$@" >/dev/null 2>&1 &
 }
 alias ddg="duckduckgo"
 alias sr="surfr "
@@ -12,16 +12,16 @@ agithub(){
                         nohup sr W "$FINAL_URL"
                 fi
         else
-                cd ~/ && nohup sr github "$@" >/dev/null 2>&1 /dev/null & cd $retdir
+                cd ~/ && nohup sr github "$@" >/dev/null 2>&1 & cd "$retdir" || exit 1
         fi
 }
 alias github="agithub "
-alias voice="nohup sr W https://voice.google.com/ >/dev/null 2>&1 /dev/null &"
-alias openmailbox="nohup sr W https://openmailbox.org/ >/dev/null 2>&1 /dev/null &"
-alias valadoc="nohup sr W https://valadoc.org >/dev/null 2>&1 /dev/null &"
-alias godoc="nohup sr W https://godoc.org >/dev/null 2>&1 /dev/null &"
+alias voice="nohup sr W https://voice.google.com/ >/dev/null 2>&1 &"
+alias openmailbox="nohup sr W https://openmailbox.org/ >/dev/null 2>&1 &"
+alias valadoc="nohup sr W https://valadoc.org >/dev/null 2>&1 &"
+alias godoc="nohup sr W https://godoc.org >/dev/null 2>&1 &"
 sreddit(){
-        nohup sr W https://reddit.com/r/"$1" >/dev/null 2>&1 /dev/null &
+        nohup sr W https://reddit.com/r/"$1" >/dev/null 2>&1 &
 }
 alias subreddit="sreddit "
 alias reddit="sreddit "

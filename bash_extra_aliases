@@ -28,7 +28,7 @@ start_tor_arm(){
 }
 
 check_conky(){
-    echo "$(ps aux | grep conky | grep -v "grep conky" | wc -l)"
+    pgrep conky | wc -l
 }
 
 youtube_dl_with_proxy(){
@@ -62,7 +62,7 @@ proxy_lynx(){
 }
 
 run_once(){
-    pgrep $@ > /dev/null || ($@ &)
+    pgrep "$@" > /dev/null || ("$@" &)
 }
 
 unset_display(){
@@ -75,10 +75,10 @@ torcheck(){
     using_tor=false
     unalias curl
     TOR_CHECK_RESULT=$(curl https://torcheck.xenobite.eu | grep "Your IP is identified to be a Tor-EXIT.")
-    if [ ! "$TOR_CHECK_RESULT" == "" ]; then
-        USING_TOR=true
+    if [ "$TOR_CHECK_RESULT" != "" ]; then
+        using_tor=true
     fi
-    if [ $USING_TOR ]; then
+    if [ $using_tor ]; then
         echo "Your IP is identified to be a Tor-EXIT."
         echo "=====           NOTICE            ====="
         echo "This function merely verified that an unaliased copy of curl
@@ -89,7 +89,7 @@ avoiding protocol or metadata leaks. Please use caution."
         echo "Your IP is NOT identified to be a Tor-EXIT."
     fi
     alias curl=curl_with_proxy
-    unset USING_TOR
+    unset using_tor
 }
 
 unalias_torsocks(){
@@ -128,7 +128,7 @@ myip(){
 torip(){
 	TOR_IP=$(tor-resolve checkip.dyndns.com)
 	echo "checkip.dyndns.com = $TOR_IP"
-	torsocks curl $TOR_IP #| sed "s@$TRIM_STR_BEGIN@@" | sed "s@$TRIM_STR_END@@"
+	torsocks curl "$TOR_IP" #| sed "s@$TRIM_STR_BEGIN@@" | sed "s@$TRIM_STR_END@@"
 }
 cleancache(){
 	rm -rfv "$HOME/.cache" &
@@ -152,6 +152,7 @@ mutt_with_tor(){
 }
 torsocks_altstream(){
 	TORSOCKS_CONF_FILE="$HOME/.torsocks.conf"
+        echo "$TORSOCKS_CONF_FILE"
 	torsocks "$@"
 }
 
@@ -173,7 +174,10 @@ alias profanity=profanity_with_tor
 alias wget=wget_with_proxy
 alias curl="curl_with_proxy"
 alias youtube-dl=youtube_dl_with_proxy
-alias mumble="torsocks mumble $@ &> /dev/null"
+anon_mumble(){
+        torsocks mumble "$@" >/dev/null 2>&1
+}
+alias mumble="anon_mumble "
 alias irssi=irssi_with_tor
 alias sms=send_text
 alias xombrero="start_xombrero"
@@ -194,22 +198,24 @@ alias cnkystrt=conky_start
 alias cnkystp=conky_stop
 alias cnkyrstrt=conky_restart
 
-alias aproj="cd $HOME/Projects/Distro_OS_Projects/AOSP/packages"
-alias dproj="cd $HOME/Projects/Distro_OS_Projects/packages"
-alias wproj="cd $HOME/Projects/Blogs_and_Infosites"
-alias lproj="cd $HOME/Projects/Distro_OS_Projects/live"
+alias aproj="cd \$HOME/Projects/Distro_OS_Projects/AOSP/packages"
+alias dproj="cd \$HOME/Projects/Distro_OS_Projects/packages"
+alias wproj="cd \$HOME/Projects/Blogs_and_Infosites"
+alias lproj="cd \$HOME/Projects/Distro_OS_Projects/live"
 
-alias aprojs="cd $HOME/Projects/Distro_OS_Projects/AOSP/packages && pcmanfm ./"
-alias dprojs="cd $HOME/Projects/Distro_OS_Projects/packages && pcmanfm ./"
-alias wprojs="cd $HOME/Projects/Blogs_and_Infosites && pcmanfm ./"
-alias lprojs="cd $HOME/Projects/Distro_OS_Projects/live && pcmanfm ./"
+alias aprojs="cd \$HOME/Projects/Distro_OS_Projects/AOSP/packages && pcmanfm ./"
+alias dprojs="cd \$HOME/Projects/Distro_OS_Projects/packages && pcmanfm ./"
+alias wprojs="cd \$HOME/Projects/Blogs_and_Infosites && pcmanfm ./"
+alias lprojs="cd \$HOME/Projects/Distro_OS_Projects/live && pcmanfm ./"
 
-alias aprojr="cd $HOME/Projects/Distro_OS_Projects/AOSP/packages && gedit ./README.md"
-alias dprojr="cd $HOME/Projects/Distro_OS_Projects/packages && gedit ./README.md"
-alias wprojr="cd $HOME/Projects/Blogs_and_Infosites && gedit ./README.md"
-alias lprojr="cd $HOME/Projects/Distro_OS_Projects/live && gedit ./README.md"
+alias aprojr="cd \$HOME/Projects/Distro_OS_Projects/AOSP/packages && gedit ./README.md"
+alias dprojr="cd \$HOME/Projects/Distro_OS_Projects/packages && gedit ./README.md"
+alias wprojr="cd \$HOME/Projects/Blogs_and_Infosites && gedit ./README.md"
+alias lprojr="cd \$HOME/Projects/Distro_OS_Projects/live && gedit ./README.md"
 
-alias proot="gedit $HOME/Projects/README.md"
-
-alias find="find $@ 2> /dev/null"
+alias proot="gedit \$HOME/Projects/README.md"
+finder(){
+        find "$@" 2> /dev/null
+}
+alias find="finder "
 alias dir="\ls --color=auto"
