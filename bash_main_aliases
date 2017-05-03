@@ -20,21 +20,7 @@ meditor(){
 	nohup medit --new-app --use-session=no $DEFAULT_FILE "$@" &> /dev/null &
 }
 alias medit="meditor "
-alias acs="apt-cache search"
-agithub(){
-        retdir=$(pwd)
-        cd ~/ && nohup sr github "$@" &> /dev/null & #; cd $retdir
-}
-alias github="agithub "
-alias reddit="nohup sr W https://reddit.com &> /dev/null &"
-alias voice="nohup sr W https://voice.google.com/ &> /dev/null &"
 alias hangouts="docker run -it --rm --name hangups --volumes-from hangups-session tdryer/hangups"
-alias openmailbox="nohup sr W https://openmailbox.org/ &> /dev/null &"
-surfr(){
-        nohup sr "$@" &> /dev/null &
-}
-alias ddg="duckduckgo"
-alias sr="surfr "
 alias dateset="sudo date --set \"$(curl -s --head http://google.com | grep ^Date: | sed 's/Date: //g')\""
 tox(){
 	cd "$HOME/Tox"
@@ -44,14 +30,10 @@ alias ratox=tox
 alias logtail="tail -n 100 log"
 alias errtail="tail -n 100 err"
 export DEBOOTSTRAPOPTS="--keyring /usr/share/keyrings/devuan-keyring.gpg"
-alias valadoc="nohup sr W https://valadoc.org &> /dev/null &"
-alias godoc="nohup sr W https://godoc.org &> /dev/null &"
-alias cups="nohup sr W 127.0.0.1:631 &>/dev/null &"
 web(){
 	nohup sr W "$@" &> /dev/null &
 }
 alias edalias="medit ~/$HOME/.bash_*aliases*"
-alias syncthing="nohup sr W http://127.0.0.1:8384/ &> /dev/null &"
 alias dub="nohup sakura &> /dev/null &"
 repopush(){
         export DEV_MESSAGE="$@"
@@ -59,3 +41,4 @@ repopush(){
 }
 alias make-push=repopush
 alias apt-get=apt
+alias acs="apt-cache search"

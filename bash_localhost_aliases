@@ -1,0 +1,4 @@
+#! /usr/bin/env sh
+alias i2pdctl="nohup sr W 127.0.0.1:7070 &> /dev/null &"
+alias cups="nohup sr W 127.0.0.1:631 &>/dev/null &"
+alias syncthing="nohup sr W http://127.0.0.1:8384/ &> /dev/null &"
