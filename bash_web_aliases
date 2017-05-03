@@ -1,27 +1,27 @@
 #! /usr/bin/env sh
 surfr(){
-        nohup sr "$@" &> /dev/null &
+        nohup sr "$@" >/dev/null 2>&1 /dev/null &
 }
 alias ddg="duckduckgo"
 alias sr="surfr "
 agithub(){
         retdir=$(pwd)
-        if [ -d "$reddir/.git" ]; then
-                if [ git remote -v | grep origin | head -n 1 | grep github ]; then
+        if [ -d "$retdir/.git" ]; then
+                if git remote -v | grep origin | head -n 1 | grep github ; then
                         FINAL_URL=$(git remote -v | grep origin | head -n 1 | sed 's|origin||' | sed 's|(fetch)||' | sed 's|git@|https://|' | tr -d '\t' | sed 's|\.git||')
                         nohup sr W "$FINAL_URL"
                 fi
         else
-                cd ~/ && nohup sr github "$@" &> /dev/null & ; cd $retdir
+                cd ~/ && nohup sr github "$@" >/dev/null 2>&1 /dev/null & cd $retdir
         fi
 }
 alias github="agithub "
-alias voice="nohup sr W https://voice.google.com/ &> /dev/null &"
-alias openmailbox="nohup sr W https://openmailbox.org/ &> /dev/null &"
-alias valadoc="nohup sr W https://valadoc.org &> /dev/null &"
-alias godoc="nohup sr W https://godoc.org &> /dev/null &"
+alias voice="nohup sr W https://voice.google.com/ >/dev/null 2>&1 /dev/null &"
+alias openmailbox="nohup sr W https://openmailbox.org/ >/dev/null 2>&1 /dev/null &"
+alias valadoc="nohup sr W https://valadoc.org >/dev/null 2>&1 /dev/null &"
+alias godoc="nohup sr W https://godoc.org >/dev/null 2>&1 /dev/null &"
 sreddit(){
-        nohup sr W https://reddit.com/r/"$1" &> /dev/null &
+        nohup sr W https://reddit.com/r/"$1" >/dev/null 2>&1 /dev/null &
 }
 alias subreddit="sreddit "
 alias reddit="sreddit "
