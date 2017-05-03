@@ -8,8 +8,9 @@ agithub(){
         retdir=$(pwd)
         if [ -d "$retdir/.git" ]; then
                 if git remote -v | grep origin | head -n 1 | grep github ; then
-                        FINAL_URL=$(git remote -v | grep origin | head -n 1 | sed 's|origin||' | sed 's|(fetch)||' | sed 's|git@|https://|' | tr -d '\t' | sed 's|\.git||')
-                        nohup sr W "$FINAL_URL"
+                        FINAL_URL=$(git remote -v | grep origin | head -n 1 | sed 's|origin||' | sed 's|(fetch)||' | tr ":" "/" | sed 's|git@|https://|' | tr -d '\t' | tr -d " " | sed 's|\.git||')
+                        echo "$FINAL_URL"
+                        cd ~ && nohup sr W "$FINAL_URL" >/dev/null 2>&1 & cd "$retdir" || exit 1
                 fi
         else
                 cd ~/ && nohup sr github "$@" >/dev/null 2>&1 & cd "$retdir" || exit 1
