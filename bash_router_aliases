@@ -1,5 +1,9 @@
 #! /usr/bin/env sh
-owrt_clients(){
-        \ssh root@192.168.2.1 iwinfo wlan0 assoclist
-        \ssh root@192.168.2.1 iwinfo wlan0-1 assoclist
+
+network_info(){
+        \ssh root@192.168.2.1 /etc/config/show_wifi_clients.sh
+        echo "
+## ARP table
+"
+        \ssh root@192.168.2.1 "cat /proc/net/arp"
 }
