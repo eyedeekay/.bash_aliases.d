@@ -1,1 +1,5 @@
 #! /usr/bin/env sh
+owrt_clients(){
+        \ssh root@192.168.2.1 iwinfo wlan0 assoclist
+        \ssh root@192.168.2.1 iwinfo wlan0-1 assoclist
+}
