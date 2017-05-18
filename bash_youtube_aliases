@@ -165,7 +165,6 @@ setup_links(){
         mkdir -p "$DLNA_SHARED_CLASSES"
 
         ln -s "$DLNA_SHARED_MUSIC" "$HOME/Music/Downloaded"
-        ln -s "$DLNA_SHARED_AUDIOPLAYS" "$HOME/Audio/Plays"
         ln -s "$DLNA_SHARED_TV" "$HOME/Videos/TV"
         ln -s "$DLNA_SHARED_MOVIES" "$HOME/Videos/Movies"
         ln -s "$DLNA_SHARED_CLASSES" "$HOME/Videos/Classes"
