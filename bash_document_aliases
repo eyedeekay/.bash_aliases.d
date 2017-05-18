@@ -1,0 +1,6 @@
+#! /bin/sh
+DLNA_SHARED_="$HOME/Documents/Books/"
+DLNA_SHARED_="$HOME/Documents/Slideshows/"
+DLNA_SHARED_="$HOME/Documents/Papers/"
+DLNA_SHARED_="$HOME/Documents/Stories/"
+DLNA_SHARED_="$HOME/Documents/Letters/"

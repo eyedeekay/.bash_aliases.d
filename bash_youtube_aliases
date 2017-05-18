@@ -1,5 +1,18 @@
 #! /bin/sh
-DLNA_SHARED_MUSIC="$HOME/Downloads/Music"
+DLNA_SHARED_AUDIOBOOK="$HOME/Audio/Books/"
+DLNA_SHARED_AUDIOPLAYS="$HOME/Audio/Theatre/"
+DLNA_SHARED_COMEDY="$HOME/Audio/Comedy/"
+DLNA_SHARED_MUSIC="$HOME/Audio/Music/"
+DLNA_SHARED_ROCK="$HOME/Audio/Music/Rock/"
+DLNA_SHARED_RAP="$HOME/Audio/Music/Rap/"
+DLNA_SHARED_ALTERNATIVE="$HOME/Audio/Music/Alternative/"
+DLNA_SHARED_CLASSIC="$HOME/Audio/Music/Classical/"
+DLNA_SHARED_JAZZ="$HOME/Audio/Music/Jazz/"
+DLNA_SHARED_BLUES="$HOME/Audio/Music/Blues/"
+DLNA_SHARED_DLNA_SHARED_MOVIES="$HOME/Video/Movies/"
+DLNA_SHARED_TV="$HOME/Video/Television/"
+DLNA_SHARED_PRESENTATION="$HOME/Video/Presentations/"
+DLNA_SHARED_CLASSES="$HOME/Video/Classes/"
 music(){
 	nohup youtube-dl -v  \
                 --prefer-free-formats \
@@ -16,7 +29,6 @@ musicplaylist(){
 	bash -c 'sleep 3; cat ~/Downloads/youtube-dl.log' &
 	echo "ydllog to view log"
 }
-DLNA_SHARED_AUDIOPLAYS="$HOME/Downloads/AudioPlay"
 audiodrama(){
         nohup youtube-dl -v  \
                 --prefer-free-formats \
@@ -33,7 +45,6 @@ audiodramaplaylist(){
 	bash -c 'sleep 3; cat ~/Downloads/youtube-dl.log' &
 	echo "ydllog to view log"
 }
-DLNA_SHARED_NEWS="$HOME/Downloads/News"
 audionews(){
         nohup youtube-dl -v  \
                 --prefer-free-formats \
@@ -50,7 +61,6 @@ audionewsplaylist(){
 	bash -c 'sleep 3; cat ~/Downloads/youtube-dl.log' &
 	echo "ydllog to view log"
 }
-DLNA_SHARED_AUDIOBOOK="$HOME/Downloads/AudioBook"
 audiobook(){
         nohup youtube-dl -v  \
                 --prefer-free-formats \
@@ -67,7 +77,6 @@ audiobookplaylist(){
 	bash -c 'sleep 3; cat ~/Downloads/youtube-dl.log' &
 	echo "ydllog to view log"
 }
-DLNA_SHARED_COMEDY="$HOME/Downloads/Comedy"
 audiocomedy(){
         nohup youtube-dl -v  \
                 --prefer-free-formats \
@@ -84,7 +93,6 @@ audiocomedyplaylist(){
 	bash -c 'sleep 3; cat ~/Downloads/youtube-dl.log' &
 	echo "ydllog to view log"
 }
-DLNA_SHARED_MOVIES="$HOME/Downloads/Movies"
 movie(){
 	nohup youtube-dl -v  \
 		--prefer-free-formats \
@@ -141,32 +149,27 @@ ydllog(){
 setup_links(){
         mkdir -p ~/Audio
         mkdir -p ~/Video
-        mkdir -p "$DLNA_SHARED_MUSIC"
-        mkdir -p "$DLNA_SHARED_AUDIOPLAYS"
-        mkdir -p "$DLNA_SHARED_NEWS"
         mkdir -p "$DLNA_SHARED_AUDIOBOOK"
+        mkdir -p "$DLNA_SHARED_AUDIOPLAYS"
         mkdir -p "$DLNA_SHARED_COMEDY"
-        mkdir -p "$DLNA_SHARED_TV"
+        mkdir -p "$DLNA_SHARED_MUSIC"
+        mkdir -p "$DLNA_SHARED_ROCK"
+        mkdir -p "$DLNA_SHARED_RAP"
+        mkdir -p "$DLNA_SHARED_ALTERNATIVE"
+        mkdir -p "$DLNA_SHARED_CLASSIC"
+        mkdir -p "$DLNA_SHARED_JAZZ"
+        mkdir -p "$DLNA_SHARED_BLUES"
         mkdir -p "$DLNA_SHARED_MOVIES"
+        mkdir -p "$DLNA_SHARED_TV"
         mkdir -p "$DLNA_SHARED_PRESENTATION"
+        mkdir -p "$DLNA_SHARED_CLASSES"
 
-        rm "$HOME/Audio/Music"
-        rm "$HOME/Audio/Plays"
-        rm "$HOME/Audio/News"
-        rm "$HOME/Audio/Books"
-        rm "$HOME/Audio/Comedy"
-        rm "$HOME/Video/TV"
-        rm "$HOME/Video/Movies"
-        rm "$HOME/Video/Presentations"
-
-        ln -s "$DLNA_SHARED_MUSIC" "$HOME/Audio/Music"
+        ln -s "$DLNA_SHARED_MUSIC" "$HOME/Music/Downloaded"
         ln -s "$DLNA_SHARED_AUDIOPLAYS" "$HOME/Audio/Plays"
-        ln -s "$DLNA_SHARED_NEWS" "$HOME/Audio/News"
-        ln -s "$DLNA_SHARED_AUDIOBOOK" "$HOME/Audio/Books"
-        ln -s "$DLNA_SHARED_COMEDY" "$HOME/Audio/Comedy"
-        ln -s "$DLNA_SHARED_TV" "$HOME/Video/TV"
-        ln -s "$DLNA_SHARED_MOVIES" "$HOME/Video/Movies"
-        ln -s "$DLNA_SHARED_PRESENTATION" "$HOME/Video/Presentations"
+        ln -s "$DLNA_SHARED_TV" "$HOME/Videos/TV"
+        ln -s "$DLNA_SHARED_MOVIES" "$HOME/Videos/Movies"
+        ln -s "$DLNA_SHARED_CLASSES" "$HOME/Videos/Classes"
+        ln -s "$DLNA_SHARED_PRESENTATION" "$HOME/Videos/Presentations"
 }
 alias song=music
 alias song=musicplaylist
