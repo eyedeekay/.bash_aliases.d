@@ -1,5 +1,5 @@
 #! /usr/bin/env sh
-alias wicd="nohup wicd-gtk >/dev/null 2>&1 &"
+alias wicd="wicd-curses"
 alias pcmanfm="nohup pcmanfm . >/dev/null 2>&1 &"
 meditor(){
 	medit_open_files=""
