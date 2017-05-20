@@ -34,6 +34,7 @@ web(){
 	nohup sr W "$@" >/dev/null 2>&1 &
 }
 alias edalias="medit \$HOME/.bash_aliases \$HOME/.bash_aliases.d/bash_*aliases*"
+alias reload_alias="cd /usr/lib/fireaxe-aliases/ && make install-global"
 alias dub="nohup sakura >/dev/null 2>&1 &"
 repopush(){
         export DEV_MESSAGE="$*"
