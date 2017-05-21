@@ -6,3 +6,4 @@ i2p_name(){
 alias i2pns="i2p_name"
 alias i2pdlog="sudo -u i2pd tail -f /var/log//i2pd/i2pd.log"
 alias i2pdctl="nohup sr W 127.0.0.1:7070 &> /dev/null &"
+alias i2ptuns="\curl 127.0.0.1:7070/?page=i2p_tunnels | grep local_destination | sed 's|</a><br>||' | sed 's|<br>||'"
