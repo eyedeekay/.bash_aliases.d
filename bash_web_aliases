@@ -26,3 +26,4 @@ sreddit(){
 }
 alias subreddit="sreddit "
 alias reddit="sreddit "
+alias syncweb="sr W 127.0.0.1:5833"
