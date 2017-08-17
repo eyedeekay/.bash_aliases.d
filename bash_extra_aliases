@@ -219,4 +219,4 @@ finder(){
 }
 alias find="finder "
 alias dir="\ls --color=auto"
-alias refreshsyncthing="killall syncthingfuse ; nohup syncthingfuse &> $HOME/.cache/syncthingfuse.log &"
+alias refreshsyncthing="killall syncthingfuse ; mkdir -p $HOME/.cache ; nohup syncthingfuse &> $HOME/.cache/syncthingfuse.log &"
