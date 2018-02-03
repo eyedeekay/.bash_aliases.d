@@ -14,6 +14,21 @@ ALIAS_browser_stdout="mdget"
 #
 ALIAS_browser_links_stdout="linkget"
 
+#
+ALIAS_gocryptfs_password_store="$HOME/.config/gocryptfs_password"
+
+#
+load_passwords(){
+
+}
+
+
+# emit and trim a the web address of a github repository
+github_weburl(){
+    FINAL_URL=$(git remote -v | grep origin | head -n 1 | sed 's|origin||' | sed 's|(fetch)||' | sed 's|git@|https://|' | tr -d '\t' | tr -d " " | sed 's|\.git||')
+    echo "$FINAL_URL"
+}
+
 # Defaults for surfraw
 sr(){
     export SURFRAW_graphical_browser="$ALIAS_browser_gui"
@@ -28,8 +43,15 @@ surfraw(){
     sr "$@"
 }
 
-# override the google elvi from surfraw. Shorten the duckduckgo elvi for convenience.
+#   override the google elvi from surfraw. Shorten the duckduckgo elvi for
+# convenience.
 alias google="duckduckgo"
 alias ddg="duckduckgo"
+
+#   override the default aliases for surfraw.
 alias sr="sr "
 alias surfraw="sr "
+
+#   add a command for directly listing the surfraw elvi since we'll be playing
+# with the outputs.
+alias elvi="/usr/bin/surfraw -elvi"

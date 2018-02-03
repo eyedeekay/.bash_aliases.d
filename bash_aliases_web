@@ -36,20 +36,28 @@ cr(){
     SURFRAW_graphical="$temp"
 }
 
-agithub(){
+#   Automatically launch a gui browser directly to a github repository's web
+# interface
+github(){
         retdir=$(pwd)
         if [ -d "$retdir/.git" ]; then
                 if git remote -v | grep origin | head -n 1 | grep github ; then
-                        FINAL_URL=$(git remote -v | grep origin | head -n 1 | sed 's|origin||' | sed 's|(fetch)||' | tr ":" "/" | sed 's|git@|https://|' | tr -d '\t' | tr -d " " | sed 's|\.git||')
+                        FINAL_URL=github_weburl
                         echo "$FINAL_URL"
-                        cd ~ && nohup sr W "$FINAL_URL" >/dev/null 2>&1 & cd "$retdir" || exit 1
+                        cd ~ && \
+                            sr W "$FINAL_URL" >/dev/null 2>&1 & \
+                        cd "$retdir" || exit 1
                 fi
         else
-                cd ~/ && nohup sr github "$@" >/dev/null 2>&1 & cd "$retdir" || exit 1
+                cd ~ && \
+                    sr github "$@" >/dev/null 2>&1 & \
+                cd "$retdir" || exit 1
         fi
 }
 
-alias github="agithub "
+alias github="github "
+
+
 alias voice="nohup sr W https://voice.google.com/ >/dev/null 2>&1 &"
 alias openmailbox="nohup sr W https://openmailbox.org/ >/dev/null 2>&1 &"
 alias valadoc="nohup sr W https://valadoc.org >/dev/null 2>&1 &"
