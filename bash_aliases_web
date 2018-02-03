@@ -1,9 +1,41 @@
 #! /usr/bin/env sh
-surfr(){
-        nohup sr "$@" >/dev/null 2>&1 &
+
+#   Plain-text code repository search: Dump a list of links from a github search
+# with non-repo URL's removed
+cr(){
+    export SURFRAW_text_browser="linkget"
+    temp="$SURFRAW_graphical"
+	SURFRAW_graphical=no
+    "$TORSOCKS"	/usr/bin/surfraw github -type=repo "$@" \
+        | grep -v -s 'https://github.com/opensearch.xml' \
+        | grep -v -s 'https://github.com/site' \
+        | grep -v -s 'https://github.com/privacy' \
+        | grep -v -s 'https://github.com/security' \
+        | grep -v -s 'https://github.com/articles' \
+        | grep -v -s 'https://github.com/about' \
+        | grep -v -s 'https://github.com/contact' \
+        | grep -v -s 'https://github.com/blog' \
+        | grep -v -s 'https://github.com/login' \
+        | grep -v -s 'https://github.com/join' \
+        | grep -v -s 'https://github.com/business' \
+        | grep -v -s 'https://github.com/topics' \
+        | grep -v -s 'https://github.com/feature' \
+        | grep -v -s 'https://github.com/explore' \
+        | grep -v -s 'https://github.com/marketplace' \
+        | grep -v -s 'https://github.com/pricing' \
+        | grep -v -s 'https://status.github.com/' \
+        | grep -v -s 'https://help.github.com/' \
+        | grep -v -s 'https://developer.github.com/' \
+        | grep -v -s 'https://training.github.com/' \
+        | grep -v -s 'https://shop.github.com/' \
+        | grep -v -s 'https://github.com/search' \
+        | grep -v -s 'https://twitter.com/' \
+        | grep -v -s 'stargazers' \
+        | grep -v -s '.css' \
+        | grep -v -s 'References'
+    SURFRAW_graphical="$temp"
 }
-alias ddg="duckduckgo"
-alias sr="surfr "
+
 agithub(){
         retdir=$(pwd)
         if [ -d "$retdir/.git" ]; then
@@ -16,6 +48,7 @@ agithub(){
                 cd ~/ && nohup sr github "$@" >/dev/null 2>&1 & cd "$retdir" || exit 1
         fi
 }
+
 alias github="agithub "
 alias voice="nohup sr W https://voice.google.com/ >/dev/null 2>&1 &"
 alias openmailbox="nohup sr W https://openmailbox.org/ >/dev/null 2>&1 &"

@@ -1,0 +1,14 @@
+#! /usr/bin/env sh
+
+if [ -f "/usr/lib/firaxe-aliases/envsetup.sh" ]; then
+    .   "/usr/lib/firaxe-aliases/envsetup.sh"
+fi
+
+screenfetch
+
+if [ -f "$HOME/.bash_aliases.d/envsetup.sh" ]; then
+    .   "$HOME/.bash_aliases.d/envsetup.sh"
+fi
+
+echo ""
+echo " > hello $(whoami)    "

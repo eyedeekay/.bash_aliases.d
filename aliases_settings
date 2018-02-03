@@ -1,0 +1,35 @@
+#! /usr/bin/env sh
+
+ALIAS_use_torsocks="torsocks"
+
+#
+ALIAS_browser_gui="uzbl"
+
+#
+ALIAS_browser_text="lynx"
+
+#
+ALIAS_browser_stdout="mdget"
+
+#
+ALIAS_browser_links_stdout="linkget"
+
+# Defaults for surfraw
+sr(){
+    export SURFRAW_graphical_browser="$ALIAS_browser_gui"
+    export SURFRAW_graphical=yes
+    export proxy_url="$TOR_PROXY"
+    echo "sr          $@ &
+    $SURFRAW_graphical_browser
+    "
+    "$TORSOCKS" /usr/bin/surfraw "$@" &
+}
+surfraw(){
+    sr "$@"
+}
+
+# override the google elvi from surfraw. Shorten the duckduckgo elvi for convenience.
+alias google="duckduckgo"
+alias ddg="duckduckgo"
+alias sr="sr "
+alias surfraw="sr "
