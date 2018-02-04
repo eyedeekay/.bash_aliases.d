@@ -1,32 +1,5 @@
 #! /usr/bin/env sh
 
-git_add_and_commit(){
-    git add . && \
-    gpg --batch --yes --clear-sign -u "$SIGNING_KEY" README.md && \
-    git commit -am "$@"
-}
-
-git_add_and_commit_and_push(){
-    gpg --batch --yes --clear-sign -u "$SIGNING_KEY" README.md && \
-    git add . && git commit -am "$@" && torsocks git push
-}
-
-git_push_with_proxy(){
-    torsocks git push "$@"
-}
-
-git_pull_with_proxy(){
-    torsocks git pull "$@"
-}
-
-git_clone_with_proxy(){
-    torsocks git clone "$@"
-}
-
-start_tor_arm(){
-    sudo -u debian-tor arm
-}
-
 check_conky(){
     pgrep conky | wc -l
 }
@@ -104,32 +77,25 @@ unalias_torsocks(){
     unalias lynx
 }
 
-gittorrent_clone(){
-    \git \clone "$@"
-}
-
 send_text(){
     \curl http://textbelt.com/text -d "number=$1" -d "message=$2"
 }
-start_xombrero(){
-    if [ -f "$HOME/.xombrero/cookies.txt" ]; then
-        echo "Clearing cookies befor starting"
-        rm -v "$HOME/.xombrero/cookies.txt"
-    fi
-    /bin/sh -c xombrero "$@"
-}
+
 overwrite(){
     dd if=/dev/urandom of="$HOME/overwrite"
     \rm "$HOME/overwrite"
 }
+
 myip(){
 	curl http://checkip.dyndns.com/ | sed "s@$TRIM_STR_BEGIN@@" | sed "s@$TRIM_STR_END@@"
 }
+
 torip(){
 	TOR_IP=$(tor-resolve checkip.dyndns.com)
 	echo "checkip.dyndns.com = $TOR_IP"
 	torsocks curl "$TOR_IP" #| sed "s@$TRIM_STR_BEGIN@@" | sed "s@$TRIM_STR_END@@"
 }
+
 cleancache(){
 	rm -rfv "$HOME/.cache" &
 	rm -rfv "$HOME/.xombreronion/cookies.txt" &
@@ -138,18 +104,22 @@ cleancache(){
         rm -rfv "$HOME/.xombreronion/cache" &
 	history -c
 }
+
 profanity_with_tor(){
 	TORSOCKS_CONF_FILE="/etc/tor/torsocks.profanity.conf"
 	torsocks profanity
 }
+
 irrsi_with_tor(){
 	TORSOCKS_CONF_FILE="/etc/tor/torsocks.irrsi.conf"
 	torsocks irrsi
 }
+
 mutt_with_tor(){
 	TORSOCKS_CONF_FILE="/etc/tor/torsocks.mutt.conf"
 	torsocks mutt
 }
+
 torsocks_altstream(){
 	TORSOCKS_CONF_FILE="$HOME/.torsocks.conf"
         echo "$TORSOCKS_CONF_FILE"
@@ -161,7 +131,6 @@ alias tunset=unset_display
 alias bleachbit="bleachbit  -co --preset"
 alias su_bleachbit="sudo bleachbit -co --preset"
 alias dialog="dialog --colors"
-alias tor-arm="sudo -u debian-tor arm"
 alias rm="srm -z"
 alias torminal=torsocks_terminal
 alias torminator=torminal
@@ -180,18 +149,8 @@ anon_mumble(){
 alias mumble="anon_mumble "
 alias irssi=irssi_with_tor
 alias sms=send_text
-alias xombrero="start_xombrero"
 
-alias hg="torsocks hg"
 alias ssh="torsocks ssh"
-alias git="torsocks git"
-
-alias commit=git_add_and_commit
-alias clone=git_clone_with_proxy
-alias cpush=git_add_and_commit_and_push
-alias push=git_push_with_proxy
-alias pull=git_pull_with_proxy
-alias gitpeer="gittorrent_clone"
 
 alias chckcnky=check_conky
 alias cnkystrt=conky_start

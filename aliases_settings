@@ -18,10 +18,6 @@ ALIAS_browser_links_stdout="linkget"
 ALIAS_gocryptfs_password_store="$HOME/.config/gocryptfs_password"
 
 #
-load_passwords(){
-
-}
-
 
 # emit and trim a the web address of a github repository
 github_weburl(){
@@ -37,10 +33,24 @@ sr(){
     echo "sr          $@ &
     $SURFRAW_graphical_browser
     "
-    "$TORSOCKS" /usr/bin/surfraw "$@" &
+    "$TORSOCKS" /usr/bin/surfraw $@ &
 }
 surfraw(){
-    sr "$@"
+    sr $@
+}
+
+# Defaults for skinnydip
+dip(){
+    export GPM_user_bin_browser="$ALIAS_browser_gui"
+    export GPM_user_bin_cookies="$HOME/.local/share/uzbl/cookies.txt"
+    export proxy_url="$TOR_PROXY"
+    echo "dip $@ &
+    $GPM_user_bin_browser
+    "
+    "$TORSOCKS" /usr/bin/skinnydip $@ &
+}
+skinnydip(){
+    dip $@
 }
 
 #   override the google elvi from surfraw. Shorten the duckduckgo elvi for
@@ -52,6 +62,11 @@ alias ddg="duckduckgo"
 alias sr="sr "
 alias surfraw="sr "
 
+#   override the default aliases for skinnydip.
+alias dip="dip "
+alias skinnydip="dip "
+
 #   add a command for directly listing the surfraw elvi since we'll be playing
 # with the outputs.
 alias elvi="/usr/bin/surfraw -elvi"
+alias wapp="/usr/bin/skinnydip -wapp"

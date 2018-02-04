@@ -1,0 +1,17 @@
+#! /usr/bin/env sh
+
+signcrypt(){
+	gpg -se -u "$MY_KEY" -r "$1" "$2"
+}
+
+sign(){
+	gpg --clear-sign -u "$MY_KEY" "$1"
+}
+
+selfcrypt(){
+	gpg -se -u "$MY_KEY" -r "$MY_KEY" "$1"
+}
+
+signpkmnt(){
+	gpg --batch --yes --clear-sign -u "$SIGNING_KEY" "$1"
+}

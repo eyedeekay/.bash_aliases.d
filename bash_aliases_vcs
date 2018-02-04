@@ -1,1 +1,37 @@
 #! /usr/bin/env sh
+
+git_add_and_commit(){
+    git add . && \
+    gpg --batch --yes --clear-sign -u "$SIGNING_KEY" README.md && \
+    git commit -am "$@"
+}
+
+git_add_and_commit_and_push(){
+    gpg --batch --yes --clear-sign -u "$SIGNING_KEY" README.md && \
+    git add . && git commit -am "$@" && "$TORSOCKS" git push
+}
+
+git_push_with_proxy(){
+    "$TORSOCKS" git push "$@"
+}
+
+git_pull_with_proxy(){
+    "$TORSOCKS" git pull "$@"
+}
+
+git_clone_with_proxy(){
+    "$TORSOCKS" git clone "$@"
+}
+
+gittorrent_clone(){
+    \git \clone "$@"
+}
+
+alias commit=git_add_and_commit
+alias clone=git_clone_with_proxy
+alias cpush=git_add_and_commit_and_push
+alias push=git_push_with_proxy
+alias pull=git_pull_with_proxy
+alias gitpeer="gittorrent_clone"
+
+alias hg="torsocks hg"
