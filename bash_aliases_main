@@ -1,45 +1,47 @@
 #! /usr/bin/env sh
 alias wicd="wicd-curses"
 alias pcmanfm="nohup pcmanfm . >/dev/null 2>&1 &"
+alias dateset="sudo date --set \"\$(curl -s --head https://google.com | grep ^Date: | sed 's/Date: //g')\""
 meditor(){
 	medit_open_files=""
 	if [ -f "Makefile" ]; then
 		medit_open_files="Makefile"
 	fi
+    if [ -f "Dockerfile" ]; then
+		medit_open_files="$medit_open_files Dockerfile"
+	fi
+    if [ -f "INSTALL" ]; then
+		medit_open_files="$medit_open_files INSTALL"
+	fi
 	if [ -f "README.md" ]; then
 		medit_open_files="$medit_open_files README.md"
-	elif [ -f "README" ]; then
+    fi
+	if [ -f "README" ]; then
 		medit_open_files="$medit_open_files README"
 	fi
-        if [ -f "auto/config" ]; then
+    if [ -f "auto/config" ]; then
 		medit_open_files="$medit_open_files auto/config"
 	fi
-        if [ -f "build.sh" ]; then
+    if [ -f "build.sh" ]; then
 		medit_open_files="$medit_open_files build.sh"
 	fi
 	nohup medit --new-app --use-session=no ${medit_open_files} "$@" >/dev/null 2>&1 &
 }
 alias medit="meditor "
-alias hangouts="docker run -it --rm --name hangups --volumes-from hangups-session tdryer/hangups"
-alias dateset="sudo date --set \"\$(curl -s --head https://google.com | grep ^Date: | sed 's/Date: //g')\""
+
+finder(){
+        find "$@" 2> /dev/null
+}
+alias find="finder "
+
 tox(){
 	cd "$HOME/Tox" || exit
 	ratox ./tox.save
 }
 alias ratox=tox
-alias logtail="tail -n 100 log"
-alias errtail="tail -n 100 err"
-export devuan_debootstrap_opts="--keyring /usr/share/keyrings/devuan-keyring.gpg"
-web(){
-	nohup sr W "$@" >/dev/null 2>&1 &
-}
-alias edalias="medit \$HOME/.bash_aliases \$HOME/.bash_aliases.d/bash_*aliases*"
-alias reload_alias="cd /usr/lib/fireaxe-aliases/ && make install-global"
-alias dub="nohup sakura >/dev/null 2>&1 &"
-repopush(){
-        export DEV_MESSAGE="$*"
-        make push
-}
-alias make-push=repopush
-alias apt-get=apt
+
+alias term="nohup stterms >/dev/null 2>&1 &"
 alias acs="apt-cache search"
+alias acv="apt-cache show"
+
+

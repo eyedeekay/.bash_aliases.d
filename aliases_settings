@@ -19,6 +19,9 @@ ALIAS_gocryptfs_password_store="$HOME/.config/gocryptfs_password"
 
 #
 
+# debootstrap opts preset
+export devuan_debootstrap_opts="--keyring /usr/share/keyrings/devuan-keyring.gpg"
+
 # emit and trim a the web address of a github repository
 github_weburl(){
     FINAL_URL=$(git remote -v | grep origin | head -n 1 | sed 's|origin||' | sed 's|(fetch)||' | sed 's|git@|https://|' | tr -d '\t' | tr -d " " | sed 's|\.git||')
@@ -70,3 +73,4 @@ alias skinnydip="dip "
 # with the outputs.
 alias elvi="/usr/bin/surfraw -elvi"
 alias wapp="/usr/bin/skinnydip -wapp"
+

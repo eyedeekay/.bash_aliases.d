@@ -22,14 +22,6 @@ torsocks_terminal(){
     bash -c ". torsocks on && terminator $@ -l default -p $HOME/.torminalrc -u -T Torminal" # &> /dev/urandom
 }
 
-toron(){
-    . torsocks on
-}
-
-toroff(){
-    . torsocks off
-}
-
 proxy_lynx(){
     torsocks lynx
 }
@@ -42,27 +34,6 @@ unset_display(){
     unset "$1"
     UNSET_TEST=$(eval "echo \$$1")
     echo "testing unset $1 $UNSET_TEST"
-}
-
-torcheck(){
-    using_tor=false
-    unalias curl
-    TOR_CHECK_RESULT=$(curl https://torcheck.xenobite.eu | grep "Your IP is identified to be a Tor-EXIT.")
-    if [ "$TOR_CHECK_RESULT" != "" ]; then
-        using_tor=true
-    fi
-    if [ $using_tor ]; then
-        echo "Your IP is identified to be a Tor-EXIT."
-        echo "=====           NOTICE            ====="
-        echo "This function merely verified that an unaliased copy of curl
-would use tor, as with the command . torsocks on. This does not mean that your
-connection is end-to-end encrypted, or that it's using https, or that you are
-avoiding protocol or metadata leaks. Please use caution."
-    else
-        echo "Your IP is NOT identified to be a Tor-EXIT."
-    fi
-    alias curl=curl_with_proxy
-    unset using_tor
 }
 
 unalias_torsocks(){
@@ -88,12 +59,6 @@ overwrite(){
 
 myip(){
 	curl http://checkip.dyndns.com/ | sed "s@$TRIM_STR_BEGIN@@" | sed "s@$TRIM_STR_END@@"
-}
-
-torip(){
-	TOR_IP=$(tor-resolve checkip.dyndns.com)
-	echo "checkip.dyndns.com = $TOR_IP"
-	torsocks curl "$TOR_IP" #| sed "s@$TRIM_STR_BEGIN@@" | sed "s@$TRIM_STR_END@@"
 }
 
 cleancache(){
@@ -157,25 +122,5 @@ alias cnkystrt=conky_start
 alias cnkystp=conky_stop
 alias cnkyrstrt=conky_restart
 
-alias aproj="cd \$HOME/Projects/Distro_OS_Projects/AOSP/packages"
-alias dproj="cd \$HOME/Projects/Distro_OS_Projects/packages"
-alias wproj="cd \$HOME/Projects/Blogs_and_Infosites"
-alias lproj="cd \$HOME/Projects/Distro_OS_Projects/live"
-
-alias aprojs="cd \$HOME/Projects/Distro_OS_Projects/AOSP/packages && pcmanfm ./"
-alias dprojs="cd \$HOME/Projects/Distro_OS_Projects/packages && pcmanfm ./"
-alias wprojs="cd \$HOME/Projects/Blogs_and_Infosites && pcmanfm ./"
-alias lprojs="cd \$HOME/Projects/Distro_OS_Projects/live && pcmanfm ./"
-
-alias aprojr="cd \$HOME/Projects/Distro_OS_Projects/AOSP/packages && gedit ./README.md"
-alias dprojr="cd \$HOME/Projects/Distro_OS_Projects/packages && gedit ./README.md"
-alias wprojr="cd \$HOME/Projects/Blogs_and_Infosites && gedit ./README.md"
-alias lprojr="cd \$HOME/Projects/Distro_OS_Projects/live && gedit ./README.md"
-
-alias proot="gedit \$HOME/Projects/README.md"
-finder(){
-        find "$@" 2> /dev/null
-}
-alias find="finder "
 alias dir="\ls --color=auto"
 alias refreshsyncthing="killall syncthingfuse ; mkdir -p $HOME/.cache ; nohup syncthingfuse &> $HOME/.cache/syncthingfuse.log &"

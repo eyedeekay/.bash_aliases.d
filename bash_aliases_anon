@@ -1,8 +1,44 @@
 #! /usr/bin/env sh
 #This file contains aliases useful for working with i2p and i2pd
+
+torcheck(){
+    using_tor=false
+    unalias curl
+    TOR_CHECK_RESULT=$(curl https://torcheck.xenobite.eu | grep "Your IP is identified to be a Tor-EXIT.")
+    if [ "$TOR_CHECK_RESULT" != "" ]; then
+        using_tor=true
+    fi
+    if [ $using_tor ]; then
+        echo "Your IP is identified to be a Tor-EXIT."
+        echo "=====           NOTICE            ====="
+        echo "This function merely verified that an unaliased copy of curl
+would use tor, as with the command . torsocks on. This does not mean that your
+connection is end-to-end encrypted, or that it's using https, or that you are
+avoiding protocol or metadata leaks. Please use caution."
+    else
+        echo "Your IP is NOT identified to be a Tor-EXIT."
+    fi
+    alias curl=curl_with_proxy
+    unset using_tor
+}
+
+torip(){
+	TOR_IP=$(tor-resolve checkip.dyndns.com)
+	echo "checkip.dyndns.com = $TOR_IP"
+	torsocks curl "$TOR_IP" #| sed "s@$TRIM_STR_BEGIN@@" | sed "s@$TRIM_STR_END@@"
+}
+
 i2p_name(){
 	sudo -u i2pd cat /var/lib/i2pd/addressbook/addresses.csv | grep "$1"
 }
 alias i2pns="i2p_name"
 alias i2pdlog="sudo -u i2pd tail -f /var/log//i2pd/i2pd.log"
 alias i2ptuns="\curl 127.0.0.1:7070/?page=i2p_tunnels | grep local_destination | sed 's|</a><br>||' | sed 's|<br>||'"
+
+toron(){
+    . torsocks on
+}
+
+toroff(){
+    . torsocks off
+}
