@@ -1,13 +1,5 @@
 #! /bin/sh
 
-youtube_dl_warning(){
-    echo "This system has been configured to automatically organize content that
-    is downloaded from streaming video sites. If you are sure you want to use
-    youtube-dl directly, please invoke it using the full path, $(which youtube-dl)"
-}
-
-alias youtube-dl=youtube_dl_warning
-
 DLNA_SHARED_AUDIOBOOK="$HOME/Audio/Books/"
 DLNA_SHARED_AUDIOPLAYS="$HOME/Audio/Theatre/"
 DLNA_SHARED_COMEDY="$HOME/Audio/Comedy/"
@@ -23,6 +15,44 @@ DLNA_SHARED_MOVIES="$HOME/Video/Movies/"
 DLNA_SHARED_TV="$HOME/Video/Television/"
 DLNA_SHARED_PRESENTATION="$HOME/Video/Presentations/"
 DLNA_SHARED_CLASSES="$HOME/Video/Classes/"
+
+youtube_dl_warning(){
+echo "DLNA Auto-Add Aliases Enabled:
+=============================="
+
+    echo "
+This system has been configured to automatically organize content that is
+downloaded from streaming video sites. If you are sure you want to use
+youtube-dl directly, please invoke it using the full path, $(which youtube-dl)"
+
+    echo "
+## spoken word aliases  | folder:
+
+   * audiobook          |   $DLNA_SHARED_AUDIOBOOK
+   * audiodrama         |   $DLNA_SHARED_AUDIOPLAYS
+   * audiocomedy        |   $DLNA_SHARED_COMEDY
+   * audionews          |   $DLNA_SHARED_AUDIONEWS
+
+## music aliases        | folder:
+
+   * music              |   $DLNA_SHARED_MUSIC
+   * rock               |   $DLNA_SHARED_ROCK
+   * rap                |   $DLNA_SHARED_RAP
+   * alternative        |   $DLNA_SHARED_ALTERNATIVE
+   * classic            |   $DLNA_SHARED_CLASSIC
+   * jazz               |   $DLNA_SHARED_JAZZ
+   * blues              |   $DLNA_SHARED_BLUES
+
+## video aliases        | folder:
+
+   * movie              |   $DLNA_SHARED_MOVIES
+   * tv                 |   $DLNA_SHARED_TV
+   * presentation       |   $DLNA_SHARED_PRESENTATION
+   * class              |   $DLNA_SHARED_CLASSES
+    "
+}
+
+alias youtube-dl=youtube_dl_warning
 
 alias audiobooks="$DLNA_SHARED_AUDIOBOOK"
 alias audiodrama="$DLNA_SHARED_AUDIOPLAYS"
@@ -124,7 +154,7 @@ movie(){
 #movieplaylist(){
 
 #}
-show(){
+tv(){
     cd "$DLNA_SHARED_TV" || exit
     yget $@
 }
