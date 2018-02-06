@@ -74,3 +74,5 @@ alias skinnydip="dip "
 alias elvi="/usr/bin/surfraw -elvi"
 alias wapp="/usr/bin/skinnydip -wapp"
 
+#   set up cd so it will accept aliases for the paths.
+alias cd='cd '

@@ -24,6 +24,22 @@ DLNA_SHARED_TV="$HOME/Video/Television/"
 DLNA_SHARED_PRESENTATION="$HOME/Video/Presentations/"
 DLNA_SHARED_CLASSES="$HOME/Video/Classes/"
 
+alias audiobooks="$DLNA_SHARED_AUDIOBOOK"
+alias audiodrama="$DLNA_SHARED_AUDIOPLAYS"
+alias audiocomedy="$DLNA_SHARED_COMEDY"
+alias audionews="$DLNA_SHARED_AUDIONEWS"
+alias music="$DLNA_SHARED_MUSIC"
+alias rock="$DLNA_SHARED_ROCK"
+alias rap="$DLNA_SHARED_RAP"
+alias alternative="$DLNA_SHARED_ALTERNATIVE"
+alias classic="$DLNA_SHARED_CLASSIC"
+alias jazz="$DLNA_SHARED_JAZZ"
+alias blues="$DLNA_SHARED_BLUES"
+alias movies="$DLNA_SHARED_MOVIES"
+alias tv="$DLNA_SHARED_TV"
+alias presentation="$DLNA_SHARED_PRESENTAION"
+alias classes="$DLNA_SHARED_CLASSES"
+
 music(){
     cd "$DLNA_SHARED_MUSIC" || exit
     yget $@

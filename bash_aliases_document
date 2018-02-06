@@ -1,6 +1,13 @@
 #! /bin/sh
-DLNA_SHARED_="$HOME/Documents/Books/"
-DLNA_SHARED_="$HOME/Documents/Slideshows/"
-DLNA_SHARED_="$HOME/Documents/Papers/"
-DLNA_SHARED_="$HOME/Documents/Stories/"
-DLNA_SHARED_="$HOME/Documents/Letters/"
+DLNA_SHARED_BOOKS="$HOME/Documents/Books/"
+DLNA_SHARED_SLIDESHOWS="$HOME/Documents/Slideshows/"
+DLNA_SHARED_PAPERS="$HOME/Documents/Papers/"
+DLNA_SHARED_STORIES="$HOME/Documents/Stories/"
+DLNA_SHARED_LETTERS="$HOME/Documents/Letters/"
+
+alias books="$DLNA_SHARED_BOOKS"
+alias slideshows="$DLNA_SHARED_SLIDESHOWS"
+alias papers="$DLNA_SHARED_PAPERS"
+alias stories="$DLNA_SHARED_STORIES"
+alias letters="$DLNA_SHARED_LETTERS"
+
