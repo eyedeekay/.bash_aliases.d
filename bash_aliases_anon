@@ -30,11 +30,11 @@ torip(){
 }
 
 toron(){
-    . torsocks on
+    . /usr/bin/torsocks on
 }
 
 toroff(){
-    . torsocks off
+    . /usr/bin/torsocks off
 }
 
 anon_mumble(){
@@ -44,6 +44,7 @@ alias mumble="anon_mumble "
 
 profanity_with_tor(){
 	TORSOCKS_CONF_FILE="/etc/tor/torsocks.profanity.conf"
+    echo "$TORSOCKS_CONF_FILE"
 	"$TORSOCKS" profanity
 }
 alias finch=profanity_with_tor
@@ -51,18 +52,21 @@ alias profanity=profanity_with_tor
 
 irrsi_with_tor(){
 	TORSOCKS_CONF_FILE="/etc/tor/torsocks.irrsi.conf"
+    echo "$TORSOCKS_CONF_FILE"
 	"$TORSOCKS" irrsi
 }
 alias irssi=irssi_with_tor
 
 mutt_with_tor(){
 	TORSOCKS_CONF_FILE="/etc/tor/torsocks.mutt.conf"
+    echo "$TORSOCKS_CONF_FILE"
 	"$TORSOCKS" mutt
 }
 alias mutt=mutt_with_tor
 
 wget_with_proxy(){
 	TORSOCKS_CONF_FILE="/etc/tor/torsocks.get.conf"
+    echo "$TORSOCKS_CONF_FILE"
     "$TORSOCKS" wget --https-only "$@"
 }
 alias wget=wget_with_proxy
@@ -70,14 +74,10 @@ alias wget=wget_with_proxy
 
 curl_with_proxy(){
 	TORSOCKS_CONF_FILE="/etc/tor/torsocks.get.conf"
+    echo "$TORSOCKS_CONF_FILE"
     "$TORSOCKS" curl "$@"
 }
 alias curl="curl_with_proxy"
-
-torsocks_terminal(){
-    bash -c ". $TORSOCKS on && terminator $@ -l default -p $HOME/.torminalrc -u -T Torminal" # &> /dev/urandom
-}
-alias torminal=torsocks_terminal
 
 proxy_lynx(){
     "$TORSOCKS" lynx

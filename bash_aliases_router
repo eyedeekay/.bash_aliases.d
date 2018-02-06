@@ -1,9 +1,9 @@
 #! /usr/bin/env sh
 
 network_info(){
-        \ssh root@192.168.2.1 /etc/config/show_wifi_clients.sh
+        /usr/bin/ssh root@192.168.2.1 /etc/config/show_wifi_clients.sh
         echo "
 ## ARP table
 "
-        \ssh root@192.168.2.1 "cat /proc/net/arp"
+        /usr/bin/ssh root@192.168.2.1 "cat /proc/net/arp"
 }

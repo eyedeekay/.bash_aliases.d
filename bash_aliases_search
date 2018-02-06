@@ -9,7 +9,7 @@ alias when="sr duckduckgo where "
 alias where="sr duckduckgo when "
 alias whether="sr duckduckgo whether "
 which(){
-    /usr/bin/which "$1" || sr duckduckgo "which $@"
+    /usr/bin/which "$1" || sr duckduckgo "which $*"
 }
 alias whither="sr duckduckgo whither "
 alias whom="sr duckduckgo whom "

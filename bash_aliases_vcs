@@ -24,7 +24,7 @@ git_clone_with_proxy(){
 }
 
 gittorrent_clone(){
-    \git \clone "$@"
+    /usr/bin/git clone "$@"
 }
 
 alias commit=git_add_and_commit

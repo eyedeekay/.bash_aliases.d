@@ -1,0 +1,150 @@
+
+In ./bash_aliases_youtube line 27:
+alias audiobooks="$DLNA_SHARED_AUDIOBOOK"
+                  ^-- SC2139: This expands when defined, not when used. Consider escaping.
+
+
+In ./bash_aliases_youtube line 28:
+alias audiodrama="$DLNA_SHARED_AUDIOPLAYS"
+                  ^-- SC2139: This expands when defined, not when used. Consider escaping.
+
+
+In ./bash_aliases_youtube line 29:
+alias audiocomedy="$DLNA_SHARED_COMEDY"
+                   ^-- SC2139: This expands when defined, not when used. Consider escaping.
+
+
+In ./bash_aliases_youtube line 30:
+alias audionews="$DLNA_SHARED_AUDIONEWS"
+                 ^-- SC2139: This expands when defined, not when used. Consider escaping.
+
+
+In ./bash_aliases_youtube line 31:
+alias music="$DLNA_SHARED_MUSIC"
+             ^-- SC2139: This expands when defined, not when used. Consider escaping.
+
+
+In ./bash_aliases_youtube line 32:
+alias rock="$DLNA_SHARED_ROCK"
+            ^-- SC2139: This expands when defined, not when used. Consider escaping.
+
+
+In ./bash_aliases_youtube line 33:
+alias rap="$DLNA_SHARED_RAP"
+           ^-- SC2139: This expands when defined, not when used. Consider escaping.
+
+
+In ./bash_aliases_youtube line 34:
+alias alternative="$DLNA_SHARED_ALTERNATIVE"
+                   ^-- SC2139: This expands when defined, not when used. Consider escaping.
+
+
+In ./bash_aliases_youtube line 35:
+alias classic="$DLNA_SHARED_CLASSIC"
+               ^-- SC2139: This expands when defined, not when used. Consider escaping.
+
+
+In ./bash_aliases_youtube line 36:
+alias jazz="$DLNA_SHARED_JAZZ"
+            ^-- SC2139: This expands when defined, not when used. Consider escaping.
+
+
+In ./bash_aliases_youtube line 37:
+alias blues="$DLNA_SHARED_BLUES"
+             ^-- SC2139: This expands when defined, not when used. Consider escaping.
+
+
+In ./bash_aliases_youtube line 38:
+alias movies="$DLNA_SHARED_MOVIES"
+              ^-- SC2139: This expands when defined, not when used. Consider escaping.
+
+
+In ./bash_aliases_youtube line 39:
+alias tv="$DLNA_SHARED_TV"
+          ^-- SC2139: This expands when defined, not when used. Consider escaping.
+
+
+In ./bash_aliases_youtube line 40:
+alias presentation="$DLNA_SHARED_PRESENTATION"
+                    ^-- SC2139: This expands when defined, not when used. Consider escaping.
+
+
+In ./bash_aliases_youtube line 41:
+alias classes="$DLNA_SHARED_CLASSES"
+               ^-- SC2139: This expands when defined, not when used. Consider escaping.
+
+
+In ./bash_aliases_youtube line 45:
+    yget $@
+         ^-- SC2068: Double quote array expansions to avoid re-splitting elements.
+
+
+In ./bash_aliases_youtube line 52:
+    yget $@
+         ^-- SC2068: Double quote array expansions to avoid re-splitting elements.
+
+
+In ./bash_aliases_youtube line 59:
+    yget $@
+         ^-- SC2068: Double quote array expansions to avoid re-splitting elements.
+
+
+In ./bash_aliases_youtube line 66:
+    yget $@
+         ^-- SC2068: Double quote array expansions to avoid re-splitting elements.
+
+
+In ./bash_aliases_youtube line 73:
+    yget $@
+         ^-- SC2068: Double quote array expansions to avoid re-splitting elements.
+
+
+In ./bash_aliases_youtube line 80:
+    yget $@
+         ^-- SC2068: Double quote array expansions to avoid re-splitting elements.
+
+
+In ./bash_aliases_youtube line 87:
+    yget $@
+         ^-- SC2068: Double quote array expansions to avoid re-splitting elements.
+
+
+In ./bash_aliases_youtube line 94:
+    yget $@
+         ^-- SC2068: Double quote array expansions to avoid re-splitting elements.
+
+
+In ./bash_aliases_youtube line 101:
+    yget $@
+         ^-- SC2068: Double quote array expansions to avoid re-splitting elements.
+
+
+In ./bash_aliases_youtube line 108:
+    yget $@
+         ^-- SC2068: Double quote array expansions to avoid re-splitting elements.
+
+
+In ./bash_aliases_youtube line 115:
+    yget $@
+         ^-- SC2068: Double quote array expansions to avoid re-splitting elements.
+
+
+In ./bash_aliases_youtube line 122:
+    yget $@
+         ^-- SC2068: Double quote array expansions to avoid re-splitting elements.
+
+
+In ./bash_aliases_youtube line 129:
+    yget $@
+         ^-- SC2068: Double quote array expansions to avoid re-splitting elements.
+
+
+In ./bash_aliases_youtube line 136:
+    yget $@
+         ^-- SC2068: Double quote array expansions to avoid re-splitting elements.
+
+
+In ./bash_aliases_youtube line 143:
+    yget $@
+         ^-- SC2068: Double quote array expansions to avoid re-splitting elements.
+

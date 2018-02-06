@@ -20,7 +20,7 @@ send_text(){
 
 overwrite(){
     dd if=/dev/urandom of="$HOME/overwrite"
-    \rm "$HOME/overwrite"
+    /usr/bin/rm -f "$HOME/overwrite"
 }
 
 cleancache(){
@@ -38,7 +38,7 @@ alias rm="srm -z"
 
 alias sms=send_text
 
-alias ssh="$TORSOCKS ssh"
+alias ssh="\$TORSOCKS ssh"
 
 alias chckcnky=check_conky
 alias cnkystrt=conky_start

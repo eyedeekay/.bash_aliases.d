@@ -1,0 +1,25 @@
+
+In ./bash_aliases_document line 8:
+alias books="$DLNA_SHARED_BOOKS"
+             ^-- SC2139: This expands when defined, not when used. Consider escaping.
+
+
+In ./bash_aliases_document line 9:
+alias slideshows="$DLNA_SHARED_SLIDESHOWS"
+                  ^-- SC2139: This expands when defined, not when used. Consider escaping.
+
+
+In ./bash_aliases_document line 10:
+alias papers="$DLNA_SHARED_PAPERS"
+              ^-- SC2139: This expands when defined, not when used. Consider escaping.
+
+
+In ./bash_aliases_document line 11:
+alias stories="$DLNA_SHARED_STORIES"
+               ^-- SC2139: This expands when defined, not when used. Consider escaping.
+
+
+In ./bash_aliases_document line 12:
+alias letters="$DLNA_SHARED_LETTERS"
+               ^-- SC2139: This expands when defined, not when used. Consider escaping.
+

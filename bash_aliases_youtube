@@ -37,7 +37,7 @@ alias jazz="$DLNA_SHARED_JAZZ"
 alias blues="$DLNA_SHARED_BLUES"
 alias movies="$DLNA_SHARED_MOVIES"
 alias tv="$DLNA_SHARED_TV"
-alias presentation="$DLNA_SHARED_PRESENTAION"
+alias presentation="$DLNA_SHARED_PRESENTATION"
 alias classes="$DLNA_SHARED_CLASSES"
 
 music(){

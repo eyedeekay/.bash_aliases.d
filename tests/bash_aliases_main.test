@@ -1,0 +1,6 @@
+
+In ./bash_aliases_main line 29:
+	nohup medit --new-app --use-session=no $medit_open_files $@ >/dev/null 2>&1 &
+                                               ^-- SC2086: Double quote to prevent globbing and word splitting.
+                                                                 ^-- SC2068: Double quote array expansions to avoid re-splitting elements.
+

@@ -26,7 +26,7 @@ meditor(){
     if [ -f "build.sh" ]; then
 		medit_open_files="$medit_open_files build.sh"
 	fi
-	nohup medit --new-app --use-session=no ${medit_open_files} "$@" >/dev/null 2>&1 &
+	nohup medit --new-app --use-session=no $medit_open_files $@ >/dev/null 2>&1 &
 }
 alias medit="meditor "
 
