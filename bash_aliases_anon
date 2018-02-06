@@ -1,6 +1,7 @@
 #! /usr/bin/env sh
-#This file contains aliases useful for working with i2p and i2pd
+#This file contains aliases useful for working with anonymous overlay networks
 
+# Tor
 torcheck(){
     using_tor=false
     unalias curl
@@ -28,13 +29,6 @@ torip(){
 	torsocks curl "$TOR_IP" #| sed "s@$TRIM_STR_BEGIN@@" | sed "s@$TRIM_STR_END@@"
 }
 
-i2p_name(){
-	sudo -u i2pd cat /var/lib/i2pd/addressbook/addresses.csv | grep "$1"
-}
-alias i2pns="i2p_name"
-alias i2pdlog="sudo -u i2pd tail -f /var/log//i2pd/i2pd.log"
-alias i2ptuns="\curl 127.0.0.1:7070/?page=i2p_tunnels | grep local_destination | sed 's|</a><br>||' | sed 's|<br>||'"
-
 toron(){
     . torsocks on
 }
@@ -42,3 +36,71 @@ toron(){
 toroff(){
     . torsocks off
 }
+
+anon_mumble(){
+        "$TORSOCKS" mumble "$@" >/dev/null 2>&1
+}
+alias mumble="anon_mumble "
+
+profanity_with_tor(){
+	TORSOCKS_CONF_FILE="/etc/tor/torsocks.profanity.conf"
+	"$TORSOCKS" profanity
+}
+alias finch=profanity_with_tor
+alias profanity=profanity_with_tor
+
+irrsi_with_tor(){
+	TORSOCKS_CONF_FILE="/etc/tor/torsocks.irrsi.conf"
+	"$TORSOCKS" irrsi
+}
+alias irssi=irssi_with_tor
+
+mutt_with_tor(){
+	TORSOCKS_CONF_FILE="/etc/tor/torsocks.mutt.conf"
+	"$TORSOCKS" mutt
+}
+alias mutt=mutt_with_tor
+
+wget_with_proxy(){
+	TORSOCKS_CONF_FILE="/etc/tor/torsocks.get.conf"
+    "$TORSOCKS" wget --https-only "$@"
+}
+alias wget=wget_with_proxy
+
+
+curl_with_proxy(){
+	TORSOCKS_CONF_FILE="/etc/tor/torsocks.get.conf"
+    "$TORSOCKS" curl "$@"
+}
+alias curl="curl_with_proxy"
+
+torsocks_terminal(){
+    bash -c ". $TORSOCKS on && terminator $@ -l default -p $HOME/.torminalrc -u -T Torminal" # &> /dev/urandom
+}
+alias torminal=torsocks_terminal
+
+proxy_lynx(){
+    "$TORSOCKS" lynx
+}
+alias lynx=proxy_lynx
+
+unalias_torsocks(){
+    unalias git
+    unalias ssh
+    unalias hg
+    unalias wget
+    unalias finch
+    unalias curl
+    unalias mutt
+    unalias lynx
+}
+
+# i2p and i2pd
+i2p_name(){
+	sudo -u i2pd cat /var/lib/i2pd/addressbook/addresses.csv | grep "$1"
+}
+alias i2pns="i2p_name"
+
+alias i2pdlog="sudo -u i2pd tail -f /var/log//i2pd/i2pd.log"
+alias i2ptuns="\curl 127.0.0.1:7070/?page=i2p_tunnels | grep local_destination | sed 's|</a><br>||' | sed 's|<br>||'"
+

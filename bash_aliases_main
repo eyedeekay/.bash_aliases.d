@@ -2,6 +2,7 @@
 alias wicd="wicd-curses"
 alias pcmanfm="nohup pcmanfm . >/dev/null 2>&1 &"
 alias dateset="sudo date --set \"\$(curl -s --head https://google.com | grep ^Date: | sed 's/Date: //g')\""
+
 meditor(){
 	medit_open_files=""
 	if [ -f "Makefile" ]; then
@@ -39,6 +40,10 @@ tox(){
 	ratox ./tox.save
 }
 alias ratox=tox
+
+myip(){
+	curl http://checkip.dyndns.com/ | sed "s@$TRIM_STR_BEGIN@@" | sed "s@$TRIM_STR_END@@"
+}
 
 alias term="nohup stterms >/dev/null 2>&1 &"
 alias acs="apt-cache search"

@@ -1,7 +1,17 @@
 #! /bin/sh
+
+youtube_dl_warning(){
+    echo "This system has been configured to automatically organize content that
+    is downloaded from streaming video sites. If you are sure you want to use
+    youtube-dl directly, please invoke it using the full path, $(which youtube-dl)"
+}
+
+alias youtube-dl=youtube_dl_warning
+
 DLNA_SHARED_AUDIOBOOK="$HOME/Audio/Books/"
 DLNA_SHARED_AUDIOPLAYS="$HOME/Audio/Theatre/"
 DLNA_SHARED_COMEDY="$HOME/Audio/Comedy/"
+DLNA_SHARED_AUDIONEWS="$HOME/Audio/News/"
 DLNA_SHARED_MUSIC="$HOME/Audio/Music/"
 DLNA_SHARED_ROCK="$HOME/Audio/Music/Rock/"
 DLNA_SHARED_RAP="$HOME/Audio/Music/Rap/"
@@ -9,259 +19,123 @@ DLNA_SHARED_ALTERNATIVE="$HOME/Audio/Music/Alternative/"
 DLNA_SHARED_CLASSIC="$HOME/Audio/Music/Classical/"
 DLNA_SHARED_JAZZ="$HOME/Audio/Music/Jazz/"
 DLNA_SHARED_BLUES="$HOME/Audio/Music/Blues/"
-DLNA_SHARED_DLNA_SHARED_MOVIES="$HOME/Video/Movies/"
+DLNA_SHARED_MOVIES="$HOME/Video/Movies/"
 DLNA_SHARED_TV="$HOME/Video/Television/"
 DLNA_SHARED_PRESENTATION="$HOME/Video/Presentations/"
 DLNA_SHARED_CLASSES="$HOME/Video/Classes/"
+
 music(){
-	nohup youtube-dl -v  \
-                --prefer-free-formats \
-		--output "$DLNA_SHARED_MUSIC/%(creator)s.%(uploader)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
+    cd "$DLNA_SHARED_MUSIC" || exit
+    yget $@
 }
-musicplaylist(){
-	nohup youtube-dl -v  \
-                --prefer-free-formats \
-		--output "$DLNA_SHARED_MUSIC/%(playlist)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
-}
+#musicplaylist(){
+
+#}
 rock(){
-	nohup youtube-dl -v  \
-                --prefer-free-formats \
-		--output "$DLNA_SHARED_ROCK/%(creator)s.%(uploader)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
+    cd "$DLNA_SHARED_ROCK" || exit
+    yget $@
 }
-rockplaylist(){
-	nohup youtube-dl -v  \
-                --prefer-free-formats \
-		--output "$DLNA_SHARED_ROCK/%(playlist)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
-}
+#rockplaylist(){
+
+#}
 rap(){
-	nohup youtube-dl -v  \
-                --prefer-free-formats \
-		--output "$DLNA_SHARED_RAP/%(creator)s.%(uploader)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
+    cd "$DLNA_SHARED_RAP" || exit
+    yget $@
 }
-rapplaylist(){
-	nohup youtube-dl -v  \
-                --prefer-free-formats \
-		--output "$DLNA_SHARED_RAP/%(playlist)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
-}
+#rapplaylist(){
+
+#}
 alternative(){
-	nohup youtube-dl -v  \
-                --prefer-free-formats \
-		--output "$DLNA_SHARED_ALTERNATIVE/%(creator)s.%(uploader)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
+    cd "$DLNA_SHARED_ALTERNATIVE" || exit
+    yget $@
 }
-alternativeplaylist(){
-	nohup youtube-dl -v  \
-                --prefer-free-formats \
-		--output "$DLNA_SHARED_ALTERNATIVE/%(playlist)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
-}
+#alternativeplaylist(){
+
+#}
 classic(){
-	nohup youtube-dl -v  \
-                --prefer-free-formats \
-		--output "$DLNA_SHARED_CLASSIC/%(creator)s.%(uploader)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
+    cd "$DLNA_SHARED_CLASSIC" || exit
+    yget $@
 }
-classicplaylist(){
-	nohup youtube-dl -v  \
-                --prefer-free-formats \
-		--output "$DLNA_SHARED_CLASSIC/%(playlist)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
-}
+#classicplaylist(){
+
+#}
 jazz(){
-	nohup youtube-dl -v  \
-                --prefer-free-formats \
-		--output "$DLNA_SHARED_JAZZ/%(creator)s.%(uploader)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
+    cd "$DLNA_SHARED_JAZZ" || exit
+    yget $@
 }
-jazzplaylist(){
-	nohup youtube-dl -v  \
-                --prefer-free-formats \
-		--output "$DLNA_SHARED_JAZZ/%(playlist)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
-}
+#jazzplaylist(){
+
+#}
 blues(){
-	nohup youtube-dl -v  \
-                --prefer-free-formats \
-		--output "$DLNA_SHARED_BLUES/%(creator)s.%(uploader)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
+    cd "$DLNA_SHARED_BLUES" || exit
+    yget $@
 }
-bluesplaylist(){
-	nohup youtube-dl -v  \
-                --prefer-free-formats \
-		--output "$DLNA_SHARED_BLUES/%(playlist)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
-}
+#bluesplaylist(){
+
+#}
 audiodrama(){
-        nohup youtube-dl -v  \
-                --prefer-free-formats \
-		--output "$DLNA_SHARED_AUDIOPLAYS/%(creator)s.%(uploader)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
+    cd "$DLNA_SHARED_AUDIOPLAYS" || exit
+    yget $@
 }
-audiodramaplaylist(){
-        nohup youtube-dl -v  \
-                --prefer-free-formats \
-		--output "$DLNA_SHARED_AUDIOPLAYS/%(playlist)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
-}
+#audiodramaplaylist(){
+
+#}
 audionews(){
-        nohup youtube-dl -v  \
-                --prefer-free-formats \
-		--output "$DLNA_SHARED_NEWS/%(creator)s.%(uploader)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
+    cd "$DLNA_SHARED_AUDIONEWS" || exit
+    yget $@
 }
-audionewsplaylist(){
-        nohup youtube-dl -v  \
-                --prefer-free-formats \
-		--output "$DLNA_SHARED_NEWS/%(playlist)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
-}
+#audionewsplaylist(){
+
+#}
 audiobook(){
-        nohup youtube-dl -v  \
-                --prefer-free-formats \
-		--output "$DLNA_SHARED_AUDIOBOOK/%(creator)s.%(uploader)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
+    cd "$DLNA_SHARED_AUDIOBOOK" || exit
+    yget $@
 }
-audiobookplaylist(){
-        nohup youtube-dl -v  \
-                --prefer-free-formats \
-		--output "$DLNA_SHARED_AUDIOBOOK/Downloads/AudioBook/%(playlist)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
-}
+#audiobookplaylist(){
+
+#}
 audiocomedy(){
-        nohup youtube-dl -v  \
-                --prefer-free-formats \
-		--output "$DLNA_SHARED_COMEDY/%(creator)s.%(uploader)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
+    cd "$DLNA_SHARED_COMEDY" || exit
+    yget $@
 }
-audiocomedyplaylist(){
-        nohup youtube-dl -v  \
-                --prefer-free-formats \
-		--output "$DLNA_SHARED_COMEDY/%(playlist)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
-}
+#audiocomedyplaylist(){
+
+#}
 movie(){
-	nohup youtube-dl -v  \
-		--prefer-free-formats \
-		--output "$DLNA_SHARED_MOVIES/%(creator)s.%(uploader)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
+    cd "$DLNA_SHARED_MOVIES" || exit
+    yget $@
 }
-movieplaylist(){
-	nohup youtube-dl -v  \
-		--prefer-free-formats \
-		--output "$DLNA_SHARED_MOVIES/%(playlist)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
-}
+#movieplaylist(){
+
+#}
 show(){
-	nohup youtube-dl -v  \
-		--prefer-free-formats \
-		--output "$DLNA_SHARED_TV/%(creator)s.%(uploader)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
+    cd "$DLNA_SHARED_TV" || exit
+    yget $@
 }
-showplaylist(){
-	nohup youtube-dl -v  \
-		--prefer-free-formats \
-		--output "$DLNA_SHARED_TV/%(playlist)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
-}
+#showplaylist(){
+
+#}
 presentation(){
-	nohup youtube-dl -v  \
-		--prefer-free-formats \
-		--output "$DLNA_SHARED_PRESENTATION/%(creator)s.%(uploader)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
+    cd "$DLNA_SHARED_PRESENTATION" || exit
+    yget $@
 }
-presentationplaylist(){
-	nohup youtube-dl -v  \
-		--prefer-free-formats \
-		--output "$DLNA_SHARED_PRESENTATION/%(playlist)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
-}
+#presentationplaylist(){
+
+#}
 class(){
-	nohup youtube-dl -v  \
-		--prefer-free-formats \
-		--output "$DLNA_SHARED_PRESENTATION/%(creator)s.%(uploader)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
+    cd "$DLNA_SHARED_CLASSES" || exit
+    yget $@
 }
-classplaylist(){
-	nohup youtube-dl -v  \
-		--prefer-free-formats \
-		--output "$DLNA_SHARED_PRESENTATION/%(playlist)s/%(title)s.%(ext)s" \
-		"$1" >~/Downloads/youtube-dl.log 2>&1 &
-	bash -c 'sleep 3; cat ~/Downloads/youtube-dl-$(date +%N).log' &
-	echo "ydllog to view log"
-}
-ydllog(){
-	tail -f "$HOME/Downloads/youtube-dl.log"
-}
+#classplaylist(){
+
+#}
 setup_links(){
         mkdir -p ~/Audio
         mkdir -p ~/Video
         mkdir -p "$DLNA_SHARED_AUDIOBOOK"
         mkdir -p "$DLNA_SHARED_AUDIOPLAYS"
         mkdir -p "$DLNA_SHARED_COMEDY"
+        mkdir -p "$DLNA_SHARED_AUDIONEWS"
         mkdir -p "$DLNA_SHARED_MUSIC"
         mkdir -p "$DLNA_SHARED_ROCK"
         mkdir -p "$DLNA_SHARED_RAP"
@@ -273,27 +147,4 @@ setup_links(){
         mkdir -p "$DLNA_SHARED_TV"
         mkdir -p "$DLNA_SHARED_PRESENTATION"
         mkdir -p "$DLNA_SHARED_CLASSES"
-
-        ln -s "$DLNA_SHARED_MUSIC" "$HOME/Music/Downloaded"
-        ln -s "$DLNA_SHARED_TV" "$HOME/Videos/TV"
-        ln -s "$DLNA_SHARED_MOVIES" "$HOME/Videos/Movies"
-        ln -s "$DLNA_SHARED_CLASSES" "$HOME/Videos/Classes"
-        ln -s "$DLNA_SHARED_PRESENTATION" "$HOME/Videos/Presentations"
 }
-alias song=music
-alias song=musicplaylist
-alias radrama=audiodrama
-alias radramapl=audiodramaplaylist
-alias news=audionews
-alias newspl=audionewspl
-alias book=audiobook
-alias bookpl=audiobookplaylist
-alias standup=audiocomedy
-alias standuppl=audiocomedyplaylist
-alias film=movie
-alias filmpl=movieplaylist
-alias tv=show
-alias tvpl=showpl
-alias conv=presentation
-alias convpl=presentationplaylist
-alias ylog=ydllog

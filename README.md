@@ -9,8 +9,10 @@ will get a whole lot better too.
 
 In it's default configuration, these aliases make use of several helper
 programs which are technically optional, but listed in the settings file anyway.
-These are: torsocks, surfraw, wget, and pandoc. This list will probably expand.
-Sorry.
+These are: torsocks, surfraw, wget, and pandoc from the Debian repos and my own
+youtube-dl management script available [here](https://github.com/eyedeekay/youtube-dl-wrapper experiments),
+and my own login manager for minimalistic web-browsers [skinnydip](https://github.dom/eyedeekay/skinnydip)
+(so named because it is a play on the concept of surfraw).
 
 ## structure
 

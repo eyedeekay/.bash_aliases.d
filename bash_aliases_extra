@@ -4,28 +4,6 @@ check_conky(){
     pgrep conky | wc -l
 }
 
-youtube_dl_with_proxy(){
-    torsocks youtube-dl "$@"
-}
-
-wget_with_proxy(){
-	TORSOCKS_CONF_FILE="/etc/tor/torsocks.get.conf"
-    torsocks wget --https-only "$@"
-}
-
-curl_with_proxy(){
-	TORSOCKS_CONF_FILE="/etc/tor/torsocks.get.conf"
-    torsocks curl "$@"
-}
-
-torsocks_terminal(){
-    bash -c ". torsocks on && terminator $@ -l default -p $HOME/.torminalrc -u -T Torminal" # &> /dev/urandom
-}
-
-proxy_lynx(){
-    torsocks lynx
-}
-
 run_once(){
     pgrep "$@" > /dev/null || ("$@" &)
 }
@@ -36,29 +14,13 @@ unset_display(){
     echo "testing unset $1 $UNSET_TEST"
 }
 
-unalias_torsocks(){
-    unalias git
-    unalias ssh
-    unalias hg
-    unalias wget
-    unalias finch
-    unalias curl
-    unalias mutt
-    unalias youtube-dl
-    unalias lynx
-}
-
 send_text(){
-    \curl http://textbelt.com/text -d "number=$1" -d "message=$2"
+    /usr/bin/curl http://textbelt.com/text -d "number=$1" -d "message=$2"
 }
 
 overwrite(){
     dd if=/dev/urandom of="$HOME/overwrite"
     \rm "$HOME/overwrite"
-}
-
-myip(){
-	curl http://checkip.dyndns.com/ | sed "s@$TRIM_STR_BEGIN@@" | sed "s@$TRIM_STR_END@@"
 }
 
 cleancache(){
@@ -70,52 +32,13 @@ cleancache(){
 	history -c
 }
 
-profanity_with_tor(){
-	TORSOCKS_CONF_FILE="/etc/tor/torsocks.profanity.conf"
-	torsocks profanity
-}
-
-irrsi_with_tor(){
-	TORSOCKS_CONF_FILE="/etc/tor/torsocks.irrsi.conf"
-	torsocks irrsi
-}
-
-mutt_with_tor(){
-	TORSOCKS_CONF_FILE="/etc/tor/torsocks.mutt.conf"
-	torsocks mutt
-}
-
-torsocks_altstream(){
-	TORSOCKS_CONF_FILE="$HOME/.torsocks.conf"
-        echo "$TORSOCKS_CONF_FILE"
-	torsocks "$@"
-}
-
 alias tunset=unset_display
 
-alias bleachbit="bleachbit  -co --preset"
-alias su_bleachbit="sudo bleachbit -co --preset"
-alias dialog="dialog --colors"
 alias rm="srm -z"
-alias torminal=torsocks_terminal
-alias torminator=torminal
-alias altornator=torsocks_altstream
 
-alias lynx=proxy_lynx
-alias mutt=mutt_with_tor
-alias finch=profanity_with_tor
-alias profanity=profanity_with_tor
-alias wget=wget_with_proxy
-alias curl="curl_with_proxy"
-alias youtube-dl=youtube_dl_with_proxy
-anon_mumble(){
-        torsocks mumble "$@" >/dev/null 2>&1
-}
-alias mumble="anon_mumble "
-alias irssi=irssi_with_tor
 alias sms=send_text
 
-alias ssh="torsocks ssh"
+alias ssh="$TORSOCKS ssh"
 
 alias chckcnky=check_conky
 alias cnkystrt=conky_start
@@ -123,4 +46,3 @@ alias cnkystp=conky_stop
 alias cnkyrstrt=conky_restart
 
 alias dir="\ls --color=auto"
-alias refreshsyncthing="killall syncthingfuse ; mkdir -p $HOME/.cache ; nohup syncthingfuse &> $HOME/.cache/syncthingfuse.log &"
