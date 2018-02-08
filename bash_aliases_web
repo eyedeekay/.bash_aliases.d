@@ -60,11 +60,13 @@ alias github="github "
 
 alias voice="nohup sr W https://voice.google.com/ >/dev/null 2>&1 &"
 alias openmailbox="nohup sr W https://openmailbox.org/ >/dev/null 2>&1 &"
-alias valadoc="nohup sr W https://valadoc.org >/dev/null 2>&1 &"
-alias godoc="nohup sr W https://godoc.org >/dev/null 2>&1 &"
+alias valadoc="nohup sr W https://valadoc.org &> /dev/null &"
+alias godoc="nohup sr W https://godoc.org &> /dev/null &"
+
 sreddit(){
         nohup sr W https://reddit.com/r/"$1" >/dev/null 2>&1 &
 }
 alias subreddit="sreddit "
 alias reddit="sreddit "
 alias syncweb="sr W 127.0.0.1:5833"
+

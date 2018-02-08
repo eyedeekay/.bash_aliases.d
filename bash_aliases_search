@@ -15,3 +15,4 @@ alias whither="sr duckduckgo whither "
 alias whom="sr duckduckgo whom "
 alias whose="sr duckduckgo whose "
 alias why="sr duckduckgo why "
+alias ducks='du -cks * | sort -rn | head'

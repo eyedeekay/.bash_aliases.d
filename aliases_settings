@@ -3,7 +3,7 @@
 ALIAS_use_torsocks="torsocks"
 
 #
-ALIAS_browser_gui="uzbl"
+ALIAS_browser_gui="uzbl-core"
 
 #
 ALIAS_browser_text="lynx"
@@ -30,13 +30,15 @@ github_weburl(){
 
 # Defaults for surfraw
 sr(){
+    echo "surfraw"
     export SURFRAW_graphical_browser="$ALIAS_browser_gui"
+    echo "$SURFRAW_graphical_browser"
     export SURFRAW_graphical=yes
-    export proxy_url="$TOR_PROXY"
+    echo "$SURFRAW_graphical"
     echo "sr          $@ &
     $SURFRAW_graphical_browser
     "
-    "$TORSOCKS" /usr/bin/surfraw $@ &
+    $TORSOCKS /usr/bin/surfraw $@ &
 }
 surfraw(){
     sr $@
@@ -46,11 +48,10 @@ surfraw(){
 dip(){
     export GPM_user_bin_browser="$ALIAS_browser_gui"
     export GPM_user_bin_cookies="$HOME/.local/share/uzbl/cookies.txt"
-    export proxy_url="$TOR_PROXY"
     echo "dip $@ &
     $GPM_user_bin_browser
     "
-    "$TORSOCKS" /usr/bin/skinnydip $@ &
+    $TORSOCKS /usr/bin/skinnydip $@ &
 }
 skinnydip(){
     dip $@
@@ -60,14 +61,6 @@ skinnydip(){
 # convenience.
 alias google="duckduckgo"
 alias ddg="duckduckgo"
-
-#   override the default aliases for surfraw.
-alias sr="sr "
-alias surfraw="sr "
-
-#   override the default aliases for skinnydip.
-alias dip="dip "
-alias skinnydip="dip "
 
 #   add a command for directly listing the surfraw elvi since we'll be playing
 # with the outputs.
