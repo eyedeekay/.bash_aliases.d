@@ -6,7 +6,7 @@ install:
 	install -m755 bin/linkget /usr/bin/linkget
 	mkdir -p /usr/lib/fireaxe-aliases/
 	cp aliases_settings /usr/lib/fireaxe-aliases/
-	cp bash_aliases_* /usr/lib/fireaxe-aliases/
+	cp -v bash_aliases_* /usr/lib/fireaxe-aliases/
 	cp envsetup.sh check.sh Makefile /usr/lib/fireaxe-aliases
 	mkdir -p /usr/share/doc/fireaxe-aliases/
 	cp README.md /usr/share/doc/fireaxe-aliases/

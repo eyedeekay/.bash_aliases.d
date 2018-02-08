@@ -3,10 +3,12 @@
 #   Plain-text code repository search: Dump a list of links from a github search
 # with non-repo URL's removed
 cr(){
-    export SURFRAW_text_browser="linkget"
-    temp="$SURFRAW_graphical"
-	SURFRAW_graphical=no
-    "$TORSOCKS"	/usr/bin/surfraw github -type=repo "$@" \
+    #. $TORSOCKS on
+    export SURFRAW_text_browser="/usr/bin/linkget"
+    export temp="$SURFRAW_graphical"
+	export SURFRAW_graphical='no'
+    export SURFRAW_graphical_browser=''
+    $TORSOCKS /usr/bin/surfraw -browser=/usr/bin/linkget github -type=repo $@ \
         | grep -v -s 'https://github.com/opensearch.xml' \
         | grep -v -s 'https://github.com/site' \
         | grep -v -s 'https://github.com/privacy' \
@@ -34,6 +36,7 @@ cr(){
         | grep -v -s '.css' \
         | grep -v -s 'References'
     SURFRAW_graphical="$temp"
+    #. $TORSOCKS off
 }
 
 #   Automatically launch a gui browser directly to a github repository's web

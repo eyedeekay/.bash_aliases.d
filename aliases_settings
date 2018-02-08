@@ -1,21 +1,21 @@
 #! /usr/bin/env sh
 
-ALIAS_use_torsocks="torsocks"
+export ALIAS_use_torsocks="torsocks"
+export TORSOCKS="torsocks"
+#
+export ALIAS_browser_gui="uzbl-core"
 
 #
-ALIAS_browser_gui="uzbl-core"
+export ALIAS_browser_text="lynx"
 
 #
-ALIAS_browser_text="lynx"
+export ALIAS_browser_stdout="mdget"
 
 #
-ALIAS_browser_stdout="mdget"
+export ALIAS_browser_links_stdout="linkget"
 
 #
-ALIAS_browser_links_stdout="linkget"
-
-#
-ALIAS_gocryptfs_password_store="$HOME/.config/gocryptfs_password"
+export ALIAS_gocryptfs_password_store="$HOME/.config/gocryptfs_password"
 
 #
 
@@ -46,8 +46,11 @@ surfraw(){
 
 # Defaults for skinnydip
 dip(){
+    echo "skinnydip"
     export GPM_user_bin_browser="$ALIAS_browser_gui"
+    echo "$GPM_user_bin_browser"
     export GPM_user_bin_cookies="$HOME/.local/share/uzbl/cookies.txt"
+    echo "$GPM_user_bin_cookies"
     echo "dip $@ &
     $GPM_user_bin_browser
     "
