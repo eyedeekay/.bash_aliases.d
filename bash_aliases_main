@@ -2,7 +2,7 @@
 alias wicd="wicd-curses"
 alias pcmanfm="nohup pcmanfm . >/dev/null 2>&1 &"
 dateset(){
-    trimmed_date="$(/usr/bin/curl -s --head https://google.com | grep ^Date: | sed 's/Date: //g')"
+    trimmed_date="$(/usr/bin/curl -s --head http://google.com | grep ^Date: | sed 's/Date: //g')"
     echo "$trimmed_date"
     sudo date --set "$trimmed_date"
 }

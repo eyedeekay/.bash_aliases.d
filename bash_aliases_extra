@@ -46,3 +46,4 @@ alias cnkystp=conky_stop
 alias cnkyrstrt=conky_restart
 
 alias dir="\ls --color=auto"
+

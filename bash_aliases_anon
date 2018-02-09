@@ -1,34 +1,6 @@
 #! /usr/bin/env sh
 #This file contains aliases useful for working with anonymous overlay networks
 
-# Tor
-torcheck(){
-    using_tor=false
-    unalias curl
-    TOR_CHECK_RESULT=$(curl https://torcheck.xenobite.eu | grep "Your IP is identified to be a Tor-EXIT.")
-    if [ "$TOR_CHECK_RESULT" != "" ]; then
-        using_tor=true
-    fi
-    if [ $using_tor ]; then
-        echo "Your IP is identified to be a Tor-EXIT."
-        echo "=====           NOTICE            ====="
-        echo "This function merely verified that an unaliased copy of curl
-would use tor, as with the command . torsocks on. This does not mean that your
-connection is end-to-end encrypted, or that it's using https, or that you are
-avoiding protocol or metadata leaks. Please use caution."
-    else
-        echo "Your IP is NOT identified to be a Tor-EXIT."
-    fi
-    alias curl=curl
-    unset using_tor
-}
-
-torip(){
-	TOR_IP=$(tor-resolve checkip.dyndns.com)
-	echo "checkip.dyndns.com = $TOR_IP"
-	torsocks curl "$TOR_IP" #| sed "s@$TRIM_STR_BEGIN@@" | sed "s@$TRIM_STR_END@@"
-}
-
 toron(){
     . /usr/bin/torsocks on
 }
@@ -43,38 +15,64 @@ mumble(){
 
 profanity(){
 	TORSOCKS_CONF_FILE="/etc/tor/torsocks.profanity.conf"
-    echo "$TORSOCKS_CONF_FILE"
+    echo "$TORSOCKS config: $TORSOCKS_CONF_FILE"
 	$TORSOCKS profanity
 }
 alias finch=profanity
 
 irrsi(){
 	TORSOCKS_CONF_FILE="/etc/tor/torsocks.irrsi.conf"
-    echo "$TORSOCKS_CONF_FILE"
+    echo "$TORSOCKS config: $TORSOCKS_CONF_FILE"
 	$TORSOCKS irrsi
 }
 
 mutt(){
 	TORSOCKS_CONF_FILE="/etc/tor/torsocks.mutt.conf"
-    echo "$TORSOCKS_CONF_FILE"
+    echo "$TORSOCKS config: $TORSOCKS_CONF_FILE"
 	$TORSOCKS mutt
 }
 
 wget(){
 	TORSOCKS_CONF_FILE="/etc/tor/torsocks.get.conf"
-    echo "$TORSOCKS_CONF_FILE"
+    echo "$TORSOCKS config: $TORSOCKS_CONF_FILE"
     $TORSOCKS wget --https-only "$@"
 }
 
 
 curl(){
 	TORSOCKS_CONF_FILE="/etc/tor/torsocks.get.conf"
-    echo "$TORSOCKS_CONF_FILE"
+    echo "$TORSOCKS config: $TORSOCKS_CONF_FILE"
     $TORSOCKS curl -L "$@"
 }
 
 lynx(){
     $TORSOCKS lynx
+}
+
+# Tor
+torcheck(){
+    using_tor=false
+    TOR_CHECK_RESULT=$(curl https://torcheck.xenobite.eu | grep "Your IP is identified to be a Tor-EXIT.")
+    if [ "$TOR_CHECK_RESULT" != "" ]; then
+        using_tor=true
+    fi
+    if [ $using_tor ]; then
+        echo "Your IP is identified to be a Tor-EXIT."
+        echo "=====           NOTICE            ====="
+        echo "This function merely verified that an unaliased copy of curl
+would use tor, as with the command . torsocks on. This does not mean that your
+connection is end-to-end encrypted, or that it's using https, or that you are
+avoiding protocol or metadata leaks. Please use caution."
+    else
+        echo "Your IP is NOT identified to be a Tor-EXIT."
+    fi
+    unset using_tor
+}
+
+torip(){
+	TOR_IP=$(tor-resolve checkip.dyndns.com)
+	echo "checkip.dyndns.com = $TOR_IP"
+	torsocks curl "$TOR_IP" #| sed "s@$TRIM_STR_BEGIN@@" | sed "s@$TRIM_STR_END@@"
 }
 
 

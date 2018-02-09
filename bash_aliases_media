@@ -1,0 +1,17 @@
+#! /usr/bin/env sh
+
+adjmount(){
+	djmount -o allow_other "$HOME/Music"
+}
+
+udjmount(){
+	fusermount -u "$HOME/Music"
+}
+
+mic_to_file(){
+    arecord -f cd -t raw | oggenc - -r -o out.ogg
+}
+
+mic_to_aplay(){
+    arecord -f cd -t raw | oggenc - -r -o - | aplay -
+}
