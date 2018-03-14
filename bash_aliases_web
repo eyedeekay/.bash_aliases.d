@@ -43,6 +43,9 @@ cr(){
 # interface
 github(){
         retdir=$(pwd)
+        export temp="$SURFRAW_graphical"
+        export SURFRAW_graphical='yes'
+        export SURFRAW_graphical_browser='surf'
         if [ -d "$retdir/.git" ]; then
                 if git remote -v | grep origin | head -n 1 | grep github ; then
                         FINAL_URL=$(github_weburl)
@@ -56,6 +59,7 @@ github(){
                     sr github "$@" >/dev/null 2>&1 & \
                 cd "$retdir" || exit 1
         fi
+        SURFRAW_graphical="$temp"
 }
 
 alias github="github "
