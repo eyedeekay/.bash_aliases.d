@@ -45,7 +45,7 @@ github(){
         retdir=$(pwd)
         if [ -d "$retdir/.git" ]; then
                 if git remote -v | grep origin | head -n 1 | grep github ; then
-                        FINAL_URL=github_weburl
+                        FINAL_URL=$(github_weburl)
                         echo "$FINAL_URL"
                         cd ~ && \
                             sr W "$FINAL_URL" >/dev/null 2>&1 & \
