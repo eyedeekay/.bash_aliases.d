@@ -51,12 +51,12 @@ github(){
                         FINAL_URL=$(github_weburl)
                         echo "$FINAL_URL"
                         cd ~ && \
-                            sr W "$FINAL_URL" >/dev/null 2>&1 & \
+                            /usr/bin/surf "$FINAL_URL" >/dev/null 2>&1 & \
                         cd "$retdir" || exit 1
                 fi
         else
                 cd ~ && \
-                    sr github "$@" >/dev/null 2>&1 & \
+                    /usr/bin/surf "$@" >/dev/null 2>&1 & \
                 cd "$retdir" || exit 1
         fi
         SURFRAW_graphical="$temp"
